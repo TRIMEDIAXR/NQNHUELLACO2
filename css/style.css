@@ -1,9 +1,58 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.fondo{
-    background-color: #2B3E4C;
+.fondo {
+    /* background-color: #2B3E4C; */
+    overflow-y: hidden !important;
+    /* Hide vertical scrollbar */
+    overflow-x: hidden !important;
+    /* Hide horizontal scrollbar */
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(180deg, #2B3E4C 29%, #1a2d3a 50%, #2B3E4C 70%);
+    animation: gradient 14s ease infinite;
+    background-size: 500% 500%;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+#superior {
+    height: 15vh;
+}
+
+#centro {
+    height: 70vh;
+}
+
+#inferior {
+    height: 15vh;
+}
+
+.logos{
+    height: 10vh;
+    width: auto;
+}
+.logs{
+    height: 7vh;
+    width: auto;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
