@@ -8,7 +8,7 @@
     /* Hide horizontal scrollbar */
 }
 .imgFondo{
-    background-image:    url("/images/fondo.jpeg");
+    background-image:    url("images/fondo.jpeg");
     background-size:     cover;        
     background-repeat:   no-repeat;
     background-position: center center;
