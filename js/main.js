@@ -42,10 +42,20 @@ class Usuario {
 }
 
 let factoresEmisionCO2 = { auto: "skk", colectivo: "" };
-let frasesBienvenida = ["", "", ""];
+let frasesBienvenida = [];
 
-
+//SE EJECUTA AL CARGA LA PAGINA
 comenzar();
+
+
+
+
+
+//FUNCIONES DE CONTROL 
+function mostrarQA(){
+    const main=document.getElementById("main").style.display = "none";
+    const qa=document.getElementById("qa").style.display = "flex";
+}
 
 
 function compartirResultado() {

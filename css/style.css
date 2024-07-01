@@ -7,12 +7,17 @@
     overflow-x: hidden !important;
     /* Hide horizontal scrollbar */
 }
-
-.fondo {
+.imgFondo{
+    background-image:    url("/images/fondo.jpeg");
+    background-size:     cover;        
+    background-repeat:   no-repeat;
+    background-position: center center;
     
+}
+.fondo {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: linear-gradient(180deg, #2B3E4C 29%, #1a2d3a 50%, #2B3E4C 70%);
+    background: linear-gradient(180deg, #14242fa9 29%, #1a2d3ace 50%, #172530f0 70%);
     animation: gradient 14s ease infinite;
     background-size: 500% 500%;
     background-attachment: fixed;
@@ -33,15 +38,24 @@
     height: 15vh;
 }
 
-.logos{
+.logos {
     height: 10vh;
     width: auto;
 }
-.logs{
+
+.logs {
     height: 7vh;
     width: auto;
 }
 
+.over {
+    
+    transition: all 1s;
+}
+
+.over:hover {
+    transform: scale(1.1);
+}
 
 @keyframes gradient {
     0% {
