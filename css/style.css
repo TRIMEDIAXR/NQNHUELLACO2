@@ -5,6 +5,7 @@
 }
 
 .fondo {
+    overflow: visible;
     /* background-color: #2B3E4C; */
     overflow-y: hidden !important;
     /* Hide vertical scrollbar */
@@ -26,7 +27,7 @@
 }
 
 #centro {
-    height: 70vh;
+    height: 65vh;
 }
 
 #inferior {
