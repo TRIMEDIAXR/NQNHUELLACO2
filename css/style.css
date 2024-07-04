@@ -8,11 +8,13 @@
     /* Hide horizontal scrollbar */
 }
 .imgFondo{
-    background-image:    url(../images/fondo.jpeg);
     background-size:     cover;        
     background-repeat:   no-repeat;
     background-position: center center;
     
+}
+.mostrar{
+    display: flex;
 }
 .fondo {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -25,7 +27,50 @@
     padding: 0;
     height: 100vh;
 }
-
+.vineta{
+    height: 25vh;
+    width: 70vw;
+    border-radius: 20px;
+    margin: 12px;
+}
+.respuesta{
+    height: 25vh;
+    width: 40vw;
+    border-radius: 10px;
+    margin: 12px;
+    background-color: rgba(99, 99, 99, 0) !important;
+    padding: 12px;
+}
+.respuesta2{
+    height: 45vh;
+    width: 40vw;
+    border-radius: 10px;
+    margin: 0;
+    background-color: rgba(99, 99, 99, 0) !important;
+    padding: 0;
+}
+::placeholder {
+    color: rgb(255, 255, 255) !important;
+    opacity: 1 !important; /* Firefox */
+  }
+.form-control{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0) !important;
+    color: white !important;
+    border: 0px;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 32px!important;
+    line-height: 0 !important;
+}
+.huellita{
+    min-height: 20vh;
+    width: 20vw;
+    height: 25vh !important;
+    display: flex;
+    justify-content: center;
+}
 #superior {
     height: 15vh;
 }
@@ -35,7 +80,7 @@
 }
 
 #inferior {
-    height: 15vh;
+    height: 18vh;
 }
 
 .logos {
@@ -47,7 +92,13 @@
     height: 7vh;
     width: auto;
 }
-
+.preguntas{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
 .over {
     
     transition: all 1s;
@@ -55,6 +106,21 @@
 
 .over:hover {
     transform: scale(1.1);
+}
+.progreso{
+    height: 100% !important;
+    width: auto;
+}
+
+@media (max-width:576px){
+    .respuesta{
+        height: 25vh;
+        width: 90vw;
+        border-radius: 10px;
+        margin: 12px;
+        background-color: rgba(116, 116, 116, 0) !important;
+        padding: 12px;
+    }
 }
 
 @keyframes gradient {
