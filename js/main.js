@@ -103,6 +103,7 @@ function mostrarQA() {
     const zona = document.getElementById("inputZona").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
@@ -128,6 +129,7 @@ function mostrarEdad() {
     const anios = document.getElementById("inputEdad").style.display = "flex";
     const zona = document.getElementById("inputZona").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
 }
 
@@ -154,6 +156,7 @@ function mostrarZona() {
     const area = document.getElementById("inputZona").style.display = "flex";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
@@ -179,6 +182,7 @@ function mostrarPersonas() {
     const area = document.getElementById("inputZona").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
 }
 
@@ -205,6 +209,7 @@ function mostrarSumiLuz() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "flex";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
 }
 
