@@ -74,7 +74,7 @@
                             </div>
                             <!-- MOSTRAR HUELLITA CONSULTAS -->
                             <div class="vineta">
-                                <div class=" text-white mt-2">
+                                <div class=" text-white">
                                     <span id="txtAnimado" class=""></span>
                                 </div>
                             </div>
@@ -84,14 +84,14 @@
                         <!-- NOMBRE  -->
                         <div id="inputNombre" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
-                                <input type="text" class="form-control" placeholder="TU NOMBRE AQUÍ"
+                                <input type="text" class="form-control" placeholder="RESPUESTA"
                                     aria-label="Username" maxlength="30" required>
                             </div>
                         </div>
                         <!-- EDAD  -->
                         <div id="inputEdad" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
-                                <input type="number" class="form-control" placeholder="TU EDAD AQUÍ"
+                                <input type="number" class="form-control" placeholder="RESPUESTA"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     aria-label="Username" maxlength="2" required>
                             </div>
@@ -161,7 +161,25 @@
 
 
                         </div>
-
+                        <!-- CONSUMO LUZ -->
+                        <div id="inputConsumo" class="row justify-content-center">
+                            <div class="respuesta2 text-white text-center">
+                                <div class="">
+                                    <div class="form-check">
+                                        <input id="CONSUMO1" name="zonas" type="radio" class="form-check-input" required>
+                                        <label class="form-check-label text-white" for="CONSUMO1">MAS DE 5KW MENSUAL</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="CONSUMO2" name="zonas" type="radio" class="form-check-input" required>
+                                        <label class="form-check-label text-white" for="CONSUMO2">5KW PROMEDIO MENSUAL</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="CONSUMO3" name="zonas" type="radio" class="form-check-input" required>
+                                        <label class="form-check-label text-white" for="CONSUMO3">MENOS DE 5KW MENSUAL</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
             </section>

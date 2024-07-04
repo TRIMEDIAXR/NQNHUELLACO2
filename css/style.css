@@ -28,18 +28,17 @@
     height: 100vh;
 }
 .vineta{
-    height: 15vh;
+    height: 20vh;
     width: 70vw;
     border-radius: 20px;
-    margin: 12px;
+    margin: 4px;
 }
 .respuesta{
     height: 25vh;
-    width: 40vw;
+    width: 90vw;
     border-radius: 10px;
-    margin: 12px;
     background-color: rgba(99, 99, 99, 0) !important;
-    padding: 12px;
+    
 }
 .respuesta2{
     height: 45vh;
@@ -72,7 +71,7 @@
     justify-content: center;
 }
 #superior {
-    height: 15vh;
+    height: 12vh;
 }
 
 #centro {
@@ -112,7 +111,7 @@
     width: auto;
 }
 
-@media (max-width:576px){
+@media (max-width:900px){
     .respuesta2{
         height: 45vh;
     width: 90vw;

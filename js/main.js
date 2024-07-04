@@ -76,7 +76,7 @@ function comenzar() {
     const qa = document.getElementById("qa").style.display = "none";
     const auspiciantes = document.getElementById("provincia").style.display = "flex";
     const botonesNav = document.getElementById("botonesNav").style.display = "none";
-    const fondo = document.getElementById("fondo").style.backgroundImage = "url(../images/fondo.jpeg)";
+    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/fondo.jpeg)";
     const main = document.getElementById("main").style.display = "block";
     pantallaActiva = 0;
     bienvenida.reset();
@@ -92,7 +92,7 @@ function mostrarQA() {
     const qa = document.getElementById("qa").style.display = "flex";
     const auspiciantes = document.getElementById("provincia").style.display = "none";
     const botonesNav = document.getElementById("botonesNav").style.display = "flex";
-    const fondo = document.getElementById("fondo").style.backgroundImage = "url(../images/perfil.jpg)";
+    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
     const login = document.getElementById("btnlogin").style.display = "none";
     pantallaActiva = 1;
     bienvenida.start();
@@ -103,6 +103,7 @@ function mostrarQA() {
     const zona = document.getElementById("inputZona").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
 
@@ -153,7 +154,7 @@ function mostrarZona() {
     const area = document.getElementById("inputZona").style.display = "flex";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "../images/progreso1.png";
+    const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
 function mostrarPersonas() {
@@ -178,7 +179,7 @@ function mostrarPersonas() {
     const area = document.getElementById("inputZona").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "../images/progreso2.png";
+    const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
 }
 
 function mostrarSumiLuz() {
@@ -202,8 +203,9 @@ function mostrarSumiLuz() {
     const anios = document.getElementById("inputEdad").style.display = "none";
     const area = document.getElementById("inputZona").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "../images/progreso2.png";
+    const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
+    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
 }
 
 
@@ -241,8 +243,9 @@ function avanzar() {
         case 5:
             mostrarSumiLuz();
             break;
-
-
+        case 6:
+            mostrarConsumo();
+            break;
         default:
             comenzar();
             break;
@@ -269,11 +272,12 @@ function retroceder() {
         case 4:
             mostrarPersonas();
             break;
-
         case 5:
             mostrarSumiLuz();
             break;
-
+        case 6:
+            mostrarConsumo();
+            break;
         default:
             comenzar();
             break;
