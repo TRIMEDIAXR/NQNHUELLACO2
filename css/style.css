@@ -7,15 +7,18 @@
     overflow-x: hidden !important;
     /* Hide horizontal scrollbar */
 }
-.imgFondo{
-    background-size:     cover;        
-    background-repeat:   no-repeat;
+
+.imgFondo {
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center center;
-    
+
 }
-.mostrar{
+
+.mostrar {
     display: flex;
 }
+
 .fondo {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
@@ -27,32 +30,46 @@
     padding: 0;
     height: 100vh;
 }
-.vineta{
+.textBeige{
+    color:#F4DFB9 !important;
+}
+.vineta {
     height: 20vh;
     width: 70vw;
     border-radius: 20px;
     margin: 4px;
 }
-.respuesta{
+
+.respuesta {
     height: 25vh;
     width: 90vw;
     border-radius: 10px;
     background-color: rgba(99, 99, 99, 0) !important;
-    
+    backdrop-filter: blur(18px);
+    border-color: rgb(255, 255, 255);
+    border-width: 3px;
+    border-style: solid;
 }
-.respuesta2{
+
+.respuesta2 {
     height: 45vh;
     width: 40vw;
     border-radius: 10px;
     margin: 0;
     background-color: rgba(99, 99, 99, 0) !important;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
+
 ::placeholder {
     color: rgb(255, 255, 255) !important;
-    opacity: 1 !important; /* Firefox */
-  }
-.form-control{
+    opacity: 1 !important;
+    /* Firefox */
+}
+
+.form-control {
     text-align: center;
     background-color: rgba(255, 255, 255, 0) !important;
     color: white !important;
@@ -60,16 +77,28 @@
     height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 32px!important;
+    font-size: 32px !important;
     line-height: 0 !important;
 }
-.huellita{
+.form-control2 {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0) !important;
+    color: white !important;
+    border: 2px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 32px !important;
+    line-height: 0 !important;
+}
+
+.huellita {
     min-height: 20vh;
     width: 20vw;
     height: 25vh !important;
     display: flex;
     justify-content: center;
 }
+
 #superior {
     height: 12vh;
 }
@@ -77,9 +106,17 @@
 #centro {
     height: 65vh;
 }
-
+.bordeW{
+    border-color: rgb(255, 255, 255) !important;
+    border-width: 3px !important;
+    border-style: solid !important;
+    border-radius: 15px !important;
+}
 #inferior {
     height: 18vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .logos {
@@ -91,34 +128,70 @@
     height: 7vh;
     width: auto;
 }
-.preguntas{
+
+.preguntas {
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
 }
+
 .over {
-    
+    min-height: 25vh !important;
     transition: all 1s;
 }
 
 .over:hover {
     transform: scale(1.1);
 }
-.progreso{
+
+.progreso {
     height: 100% !important;
     width: auto;
 }
 
-@media (max-width:900px){
-    .respuesta2{
+.card {
+    border-style: none !important;
+    background-color: rgba(255, 255, 255, 0.064) !important;
+    border-radius: 5px !important;
+    backdrop-filter: blur(18px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    height: 100vh !important;
+}
+
+.frente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    z-index:21;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+  }
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:900px) {
+    .respuesta2 {
         height: 45vh;
-    width: 90vw;
-    border-radius: 10px;
-    margin: 0;
-    background-color: rgba(99, 99, 99, 0) !important;
-    padding: 0;
+        width: 90vw;
+        border-radius: 10px;
+        margin: 0;
+        background-color: rgba(99, 99, 99, 0) !important;
+        padding: 0;
+        display: flex;
+    justify-content: center;
+    align-content: center;
     }
 }
 

@@ -15,6 +15,31 @@
 </head>
 
 <body class="imgFondo" id="fondo">
+    <!--PANTALLA FLOTANTE-->
+    <section id="pantalla" class="frente">
+        <div class=" card" id="tarjeta">
+            <div class="row  d-flex flex-column justify-content-center align-content-center" id="caja">
+                <div class="d-flex flex-column justify-content-center align-content-center columna">
+                    <div class="row justify-content-center" id="caja2">
+
+                        <form class="col-10 col-md-4  d-flex flex-column align-content-center justify-content-center m-4 bordeW">
+                            <img class="m-4" src="images/huellaco2.svg" alt="huellalogin">
+                            <h1 class="h3 fw-normal text-white text-center textBeige">Acceso para administradores</h1>
+                            <label for="floatingInput" class="textBeige mt-4">Nombre de Admin</label>
+                            <input type="text" class="form-control2" id="floatingInput" placeholder="Usuario">
+                            
+                            <label for="floatingPassword" class="textBeige">Clave Alfanumérica</label>
+                            <input type="password" class="form-control2" id="floatingPassword"
+                                placeholder="Contraseña">
+                            
+                            <button class="btn btn-success w-100 text-white mt-4 mb-3" type="submit">Ingresar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="fondo container-fluid">
         <header id="superior" class="row d-flex justify-content-center">
             <!-- MOSTRAR LOGIN Y LOGO -->
@@ -23,8 +48,9 @@
                     class="d-flex align-items-center"><img src="images/huellaco2.svg" alt="logoHuella"
                         class="logs img img-fluid"></a>
             </div>
-            <div class="col-lg-4 col-3  d-flex justify-content-end p-4"><a id="btnlogin" href="#"><img
-                        src="images/login.svg" alt="login" class="logs img img-fluid"></a></div>
+            <div class="col-lg-4 col-3  d-flex justify-content-end p-4"><a id="btnlogin" href="#"
+                    onclick="mostrarPantalla()"><img src="images/login.svg" alt="login" class="logs img img-fluid"></a>
+            </div>
 
         </header>
         <main id="centro" class="row d-flex justify-content-center w-100 p-0 m-0 ">
@@ -84,14 +110,14 @@
                         <!-- NOMBRE  -->
                         <div id="inputNombre" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
-                                <input type="text" class="form-control" placeholder="RESPUESTA"
-                                    aria-label="Username" maxlength="30" required>
+                                <input type="text" class="form-control" placeholder="NOMBRE" aria-label="Username"
+                                    maxlength="30" required>
                             </div>
                         </div>
                         <!-- EDAD  -->
                         <div id="inputEdad" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
-                                <input type="number" class="form-control" placeholder="RESPUESTA"
+                                <input type="number" class="form-control" placeholder="EDAD"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     aria-label="Username" maxlength="2" required>
                             </div>
@@ -144,19 +170,22 @@
 
                         <div id="inputSumiLuz" class="row justify-content-center">
                             <div class="respuesta2 text-white text-center">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="luz1">
-                                    <label class="form-check-label text-white fs3" for="luz1">Energía de Red</label>
+                                <div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="luz1">
+                                        <label class="form-check-label text-white fs3" for="luz1">Energía de Red</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="luz2">
+                                        <label class="form-check-label text-white fs3" for="luz2">Energía Solar</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="luz3">
+                                        <label class="form-check-label text-white fs3" for="luz3">Generador
+                                            Eléctrico</label>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="luz2">
-                                    <label class="form-check-label text-white fs3" for="luz2">Energía Solar</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="luz3">
-                                    <label class="form-check-label text-white fs3" for="luz3">Generador
-                                        Eléctrico</label>
-                                </div>
+                                
                             </div>
 
 
@@ -166,16 +195,22 @@
                             <div class="respuesta2 text-white text-center">
                                 <div class="">
                                     <div class="form-check">
-                                        <input id="CONSUMO1" name="zonas" type="radio" class="form-check-input" required>
-                                        <label class="form-check-label text-white" for="CONSUMO1">MAS DE 5KW MENSUAL</label>
+                                        <input id="CONSUMO1" name="zonas" type="radio" class="form-check-input"
+                                            required>
+                                        <label class="form-check-label text-white" for="CONSUMO1">MAS DE 150KW
+                                            MENSUAL</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="CONSUMO2" name="zonas" type="radio" class="form-check-input" required>
-                                        <label class="form-check-label text-white" for="CONSUMO2">5KW PROMEDIO MENSUAL</label>
+                                        <input id="CONSUMO2" name="zonas" type="radio" class="form-check-input"
+                                            required>
+                                        <label class="form-check-label text-white" for="CONSUMO2">150KW PROMEDIO
+                                            MENSUAL</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="CONSUMO3" name="zonas" type="radio" class="form-check-input" required>
-                                        <label class="form-check-label text-white" for="CONSUMO3">MENOS DE 5KW MENSUAL</label>
+                                        <input id="CONSUMO3" name="zonas" type="radio" class="form-check-input"
+                                            required>
+                                        <label class="form-check-label text-white" for="CONSUMO3">MENOS DE 150KW
+                                            MENSUAL</label>
                                     </div>
                                 </div>
                             </div>

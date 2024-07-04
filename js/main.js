@@ -1,3 +1,6 @@
+const pantalla = document.getElementById("pantalla").style.display = "none";
+
+
 var bienvenida = new Typed('#txtAnimado', {
     strings: [
         '<i class="fs-4">¡Hola!Te damos la bienvenida a nuestra calculadora de huella de carbono.</i>',
@@ -184,13 +187,14 @@ function mostrarPersonas() {
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
+    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
 }
 
 function mostrarSumiLuz() {
     personas.destroy();
     sumiluz = new Typed('#txtAnimado', {
         strings: [
-            '<i class="fs-4">¿Qué tipo de suministro eléctrico posees?</i>'],
+            '<i class="fs-4">¿Qué tipo de suministro eléctrico utilizas?</i>'],
 
         typeSpeed: 20,
         backSpeed: 50,
@@ -209,12 +213,36 @@ function mostrarSumiLuz() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "flex";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
 }
 
 
+function mostrarConsumo(){
+    sumiluz.destroy();
+    consumo = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuál es tu consumo eléctrico mensual?</i>'],
 
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    const nombre = document.getElementById("inputNombre").style.display = "none";
+    const anios = document.getElementById("inputEdad").style.display = "none";
+    const area = document.getElementById("inputZona").style.display = "none";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const consumoLuz = document.getElementById("inputConsumo").style.display = "flex";
+    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
+}
 
 
 
@@ -222,6 +250,10 @@ function compartirResultado() {
 
 }
 
+function mostrarPantalla() {
+
+    const pantalla = document.getElementById("pantalla").style.display = "flex";
+}
 
 //TECLAS DE CONTROL
 window.addEventListener("keydown", function (e) { if (13 == e.keyCode) { avanzar() } });
@@ -288,3 +320,13 @@ function retroceder() {
             break;
     }
 }
+
+window.onload = function () {
+
+    document.onclick = function (e) {
+        if (e.target.id == "pantalla" || e.target.id == "tarjeta" || e.target.id == "caja" || e.target.id == "caja2") {
+            //element clicked wasn't the div; hide the div
+            const divToHide = document.getElementById("pantalla").style.display = "none";
+        }
+    };
+};
