@@ -78,18 +78,17 @@
                                     <span id="txtAnimado" class=""></span>
                                 </div>
                             </div>
-                            <!-- MOSTRAR HUELLITA CONSULTAS -->
                         </div>
                     </div>
                     <div class="col-12">
-                        <!-- ESCRIBIR NOMBRE  -->
+                        <!-- NOMBRE  -->
                         <div id="inputNombre" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
                                 <input type="text" class="form-control" placeholder="TU NOMBRE AQUÍ"
                                     aria-label="Username" maxlength="30" required>
                             </div>
                         </div>
-                        <!-- ESCRIBIR EDAD  -->
+                        <!-- EDAD  -->
                         <div id="inputEdad" class="row justify-content-center">
                             <div class="respuesta text-white text-center">
                                 <input type="number" class="form-control" placeholder="TU EDAD AQUÍ"
@@ -97,52 +96,73 @@
                                     aria-label="Username" maxlength="2" required>
                             </div>
                         </div>
-                        <!-- ESCRIBIR ZONA  -->
+                        <!-- ZONA  -->
                         <div id="inputZona" class="row justify-content-center">
                             <div class="respuesta2 text-white text-center">
                                 <div class="">
                                     <div class="form-check">
-                                        <input id="0" name="zonas" type="radio" class="form-check-input"
-                                            checked required>
+                                        <input id="0" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="0">VACA MUERTA</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="1" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="1" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="1">CENTRO OESTE</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="2" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="2" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="2">COMARCA
                                             PETROLERA</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="3" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="3" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="3">NORTE</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="4" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="4" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="4">CONFLUENCIA</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="5" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="5" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="5">LIMAY CENTRO</label>
                                     </div>
                                     <div class="form-check">
-                                        <input id="6" name="paymentMethod" type="radio" class="form-check-input"
-                                            required>
+                                        <input id="6" name="zonas" type="radio" class="form-check-input" required>
                                         <label class="form-check-label text-white" for="6">REGIÓN SUR</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <!-- HOGAR-CANTIDAD DE PERSONAS  -->
+                        <div id="inputPersonas" class="row justify-content-center">
+                            <div class="respuesta text-white text-center">
+                                <input type="number" class="form-control" placeholder="CANTIDAD"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    aria-label="Username" maxlength="2" required>
+                            </div>
+                        </div>
+                        <!-- HOGAR-SUMINISTRO ELECTRICO  -->
 
-                </div>
+                        <div id="inputSumiLuz" class="row justify-content-center">
+                            <div class="respuesta2 text-white text-center">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="luz1">
+                                    <label class="form-check-label text-white fs3" for="luz1">Energía de Red</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="luz2">
+                                    <label class="form-check-label text-white fs3" for="luz2">Energía Solar</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="luz3">
+                                    <label class="form-check-label text-white fs3" for="luz3">Generador
+                                        Eléctrico</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
 
             </section>
         </main>
@@ -163,7 +183,7 @@
                     <button type="button" class="btn btn-success" id="btnVolver" onclick="retroceder()">Volver</button>
                 </div>
                 <div class="col-6 col-sm-3  d-flex justify-content-center me-0 ms-0 ps-0 pe-0">
-                    <img src="images/progreso1.png" alt="login" class="img  progreso">
+                    <img id="progressBar" src="images/progreso1.png" alt="login" class="img  progreso">
                 </div>
                 <div class="col-3 col-sm-4 d-flex justify-content-start">
                     <button type="button" class="btn btn-success" id="btnSiguiente" onclick="avanzar()">Seguir</button>
@@ -171,10 +191,11 @@
             </div>
         </footer>
     </div>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="js/main.js"></script>
 </body>
 

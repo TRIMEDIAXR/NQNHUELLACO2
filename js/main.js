@@ -17,6 +17,8 @@ var bienvenida = new Typed('#txtAnimado', {
 })
 var edad;
 let zona;
+let personas;
+let sumiluz;
 
 class Usuario {
     constructor(nombre, apellido, edad, telefono, mail, region, consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
@@ -99,6 +101,8 @@ function mostrarQA() {
     const nombre = document.getElementById("inputNombre").style.display = "flex";
     const edad = document.getElementById("inputEdad").style.display = "none";
     const zona = document.getElementById("inputZona").style.display = "none";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
 }
 
 
@@ -122,6 +126,8 @@ function mostrarEdad() {
     const nombre = document.getElementById("inputNombre").style.display = "none";
     const anios = document.getElementById("inputEdad").style.display = "flex";
     const zona = document.getElementById("inputZona").style.display = "none";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
 }
 
 function mostrarZona() {
@@ -145,7 +151,65 @@ function mostrarZona() {
     const nombre = document.getElementById("inputNombre").style.display = "none";
     const anios = document.getElementById("inputEdad").style.display = "none";
     const area = document.getElementById("inputZona").style.display = "flex";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const progresBar = document.getElementById("progressBar").src = "../images/progreso1.png";
 }
+
+function mostrarPersonas() {
+    zona.destroy();
+    personas = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuántas personas viven en tu domicilio?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    const nombre = document.getElementById("inputNombre").style.display = "none";
+    const anios = document.getElementById("inputEdad").style.display = "none";
+    const area = document.getElementById("inputZona").style.display = "none";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
+    const progresBar = document.getElementById("progressBar").src = "../images/progreso2.png";
+}
+
+function mostrarSumiLuz() {
+    personas.destroy();
+    sumiluz = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Qué tipo de suministro eléctrico posees?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    const nombre = document.getElementById("inputNombre").style.display = "none";
+    const anios = document.getElementById("inputEdad").style.display = "none";
+    const area = document.getElementById("inputZona").style.display = "none";
+    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const progresBar = document.getElementById("progressBar").src = "../images/progreso2.png";
+    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
+}
+
+
+
+
+
 
 function compartirResultado() {
 
@@ -153,7 +217,7 @@ function compartirResultado() {
 
 
 //TECLAS DE CONTROL
-
+window.addEventListener("keydown", function (e) { if (13 == e.keyCode) { avanzar() } });
 function avanzar() {
     //AUMENTA LA POSICION DE PANTALLAS
     pantallaActiva += 1;
@@ -171,6 +235,13 @@ function avanzar() {
         case 3:
             mostrarZona();
             break;
+        case 4:
+            mostrarPersonas();
+            break;
+        case 5:
+            mostrarSumiLuz();
+            break;
+
 
         default:
             comenzar();
@@ -195,7 +266,13 @@ function retroceder() {
         case 3:
             mostrarZona();
             break;
+        case 4:
+            mostrarPersonas();
+            break;
 
+        case 5:
+            mostrarSumiLuz();
+            break;
 
         default:
             comenzar();
