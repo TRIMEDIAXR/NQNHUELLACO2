@@ -218,7 +218,7 @@ function mostrarSumiLuz() {
 }
 
 
-function mostrarConsumo(){
+function mostrarConsumo() {
     sumiluz.destroy();
     consumo = new Typed('#txtAnimado', {
         strings: [
@@ -315,6 +315,30 @@ function retroceder() {
         case 6:
             mostrarConsumo();
             break;
+        case 7:
+            mostrarSumiGas();
+            break;
+        case 8:
+            mostrarConsumoGas();
+            break;
+        case 9:
+            mostrarTransporte();
+            break;
+        case 10:
+            mostrarLargaDis();
+            break;
+        case 11:
+            mostrarDieta();
+            break;
+        case 12:
+            mostrarGracias();
+            break;
+        case 13:
+            mostrarResultado();
+            break;
+        case 14:
+            mostrarMasPreguntas();
+            break;
         default:
             comenzar();
             break;
@@ -330,3 +354,15 @@ window.onload = function () {
         }
     };
 };
+
+const images = ["images/imagen1.png", "images/imagen2.png", "images/imagen3.png"]; // Ruta de las imágenes
+        const imageContainer = document.getElementById("image-container");
+        let currentIndex = 0;
+
+        function changeImage() {
+            imageContainer.innerHTML = `<img src="${images[currentIndex]}" alt="Imagen ${currentIndex + 1}">`;
+            currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente índice (ciclo)
+        }
+
+        // Cambia la imagen cada 3 segundos (ajusta el tiempo según tus necesidades)
+        setInterval(changeImage, 500);
