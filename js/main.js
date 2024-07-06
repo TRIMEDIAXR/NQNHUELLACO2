@@ -1,5 +1,5 @@
 const pantalla = document.getElementById("pantalla").style.display = "none";
-
+let contadorSaludo=0;
 
 var bienvenida = new Typed('#txtAnimado', {
     strings: [
@@ -91,6 +91,7 @@ function comenzar() {
 ////////////////////////COMIENZA LA CAPTURA DE DATOS PERSONALES///////////////////
 
 function mostrarQA() {
+    contadorSaludo+=1;
     const main = document.getElementById("main").style.display = "none";
     const qa = document.getElementById("qa").style.display = "flex";
     const auspiciantes = document.getElementById("provincia").style.display = "none";
@@ -100,6 +101,10 @@ function mostrarQA() {
     pantallaActiva = 1;
     bienvenida.start();
     bienvenida.reset();
+    if(contadorSaludo==1){
+        const saludar= document.getElementById("saludo").play();
+        console.log(contadorSaludo);
+    }
     console.log(pantallaActiva);
     const nombre = document.getElementById("inputNombre").style.display = "flex";
     const edad = document.getElementById("inputEdad").style.display = "none";
@@ -115,7 +120,7 @@ function mostrarEdad() {
     bienvenida.destroy();
     edad = new Typed('#txtAnimado', {
         strings: [
-            '<i class="fs-4">¿Qué edad tenes?</i>'],
+            '<i class="fs-4">¿Qué edad tenés?</i>'],
 
         typeSpeed: 20,
         backSpeed: 50,
