@@ -104,6 +104,7 @@ function comenzar() {
     const botonesNav = document.getElementById("botonesNav").style.display = "none";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/fondo.jpeg)";
     const main = document.getElementById("main").style.display = "block";
+    const masInfo = document.getElementById("btnInfo").style.display = "none";
     pantallaActiva = 0;
     bienvenida.reset();
     bienvenida.start();
@@ -121,6 +122,7 @@ function mostrarQA() {
     const botonesNav = document.getElementById("botonesNav").style.display = "flex";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
     const login = document.getElementById("btnlogin").style.display = "none";
+    const masInfo = document.getElementById("btnInfo").style.display = "flex";
     pantallaActiva = 1;
     if (contadorSaludo == 1) {
         const saludar = document.getElementById("saludo").play();
@@ -173,7 +175,7 @@ function mostrarZona() {
     zona = new Typed('#txtAnimado', {
         strings: [
             '<i class="fs-4">¿En qué región de la provincia de Neuquén vivís?</i>^2000',
-            '<i class="fs-4">Si necesitas ayuda, puedes consultar en el botón de +info</i>'],
+            '<i class="fs-4">Si necesitas ayuda, puedes consultar en el botón +info</i>'],
 
         typeSpeed: 20,
         backSpeed: 50,
@@ -284,8 +286,17 @@ function compartirResultado() {
 }
 
 function mostrarPantalla() {
+    if (pantallaActiva ==0) {
+        const pantalla = document.getElementById("pantalla").style.display = "flex";
+        const login = document.getElementById("loginCard").style.display = "flex";
+        const info = document.getElementById("infoCard").style.display = "none";
+    }
+    if (pantallaActiva >0){
+        const pantalla2 = document.getElementById("pantalla").style.display = "flex";
+        const login2 = document.getElementById("loginCard").style.display = "none";
+        const info2 = document.getElementById("infoCard").style.display = "flex";
+    }
 
-    const pantalla = document.getElementById("pantalla").style.display = "flex";
 }
 
 //TECLAS DE CONTROL

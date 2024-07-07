@@ -21,18 +21,21 @@
             <div class="row  d-flex flex-column justify-content-center align-content-center" id="caja">
                 <div class="d-flex flex-column justify-content-center align-content-center columna">
                     <div class="row justify-content-center" id="caja2">
-
-                        <form class="col-10 col-md-4  d-flex flex-column align-content-center justify-content-center m-4 bordeW">
+                        <!--PANTALLA FORMULARIO LOGIN-->
+                        <form class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW" id="loginCard">
                             <img class="m-4" src="images/huellaco2.svg" alt="huellalogin">
                             <h1 class="h3 fw-normal text-white text-center textBeige">Acceso para administradores</h1>
                             <label for="floatingInput" class="textBeige mt-4">Nombre de Admin</label>
                             <input type="text" class="form-control2" id="floatingInput" placeholder="Usuario">
-                            
+
                             <label for="floatingPassword" class="textBeige">Clave Alfanumérica</label>
-                            <input type="password" class="form-control2" id="floatingPassword"
-                                placeholder="Contraseña">
+                            <input type="password" class="form-control2" id="floatingPassword" placeholder="Contraseña">
                             <button class="btn btn-success w-100 text-white mt-4 mb-3" type="submit">Ingresar</button>
                         </form>
+                        <!--PANTALLA MAS INFORMACION-->
+                        <div id="infoCard" class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW text-white fs-3">
+                            Este espacio es para agregar la info de cada sección en las preguntas.Dar ayuda para elegir una opción de respuesta o mostrar links extras.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,6 +51,9 @@
             </div>
             <div class="col-lg-4 col-3  d-flex justify-content-end p-4"><a id="btnlogin" href="#"
                     onclick="mostrarPantalla()"><img src="images/login.svg" alt="login" class="logs img img-fluid"></a>
+                    <!-- MOSTRAR MAS INFO-->
+                    <a id="btnInfo" href="#"
+                    onclick="mostrarPantalla()"><img src="images/info.svg" alt="info" class="logs img img-fluid"></a>
             </div>
 
         </header>
@@ -158,8 +164,8 @@
                                             <label class="form-check-label text-white" for="6">REGIÓN SUR</label>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                             </div>
                         </div>
@@ -190,7 +196,7 @@
                                             Eléctrico</label>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
 
