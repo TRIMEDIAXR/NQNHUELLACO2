@@ -1,5 +1,5 @@
 const pantalla = document.getElementById("pantalla").style.display = "none";
-let contadorSaludo=0;
+let contadorSaludo = 0;
 
 var bienvenida = new Typed('#txtAnimado', {
     strings: [
@@ -22,6 +22,29 @@ var edad;
 let zona;
 let personas;
 let sumiluz;
+
+var placeNombre = new Typed('#usuarioNombre', {
+    strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
+    startDelay: 7000,
+    typeSpeed: 40,
+    backSpeed: 40,
+    attr: 'placeholder',
+    bindInputFocusEvents: true,
+    showCursor: true,
+    loop: true
+});
+
+var placeEdad = new Typed('#usuarioNombre', {
+    strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
+    startDelay: 7000,
+    typeSpeed: 40,
+    backSpeed: 40,
+    attr: 'placeholder',
+    bindInputFocusEvents: true,
+    showCursor: true,
+    loop: true
+});
+
 
 class Usuario {
     constructor(nombre, apellido, edad, telefono, mail, region, consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
@@ -91,7 +114,7 @@ function comenzar() {
 ////////////////////////COMIENZA LA CAPTURA DE DATOS PERSONALES///////////////////
 
 function mostrarQA() {
-    contadorSaludo+=1;
+    contadorSaludo += 1;
     const main = document.getElementById("main").style.display = "none";
     const qa = document.getElementById("qa").style.display = "flex";
     const auspiciantes = document.getElementById("provincia").style.display = "none";
@@ -99,13 +122,11 @@ function mostrarQA() {
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
     const login = document.getElementById("btnlogin").style.display = "none";
     pantallaActiva = 1;
-    bienvenida.start();
-    bienvenida.reset();
-    if(contadorSaludo==1){
-        const saludar= document.getElementById("saludo").play();
-        console.log(contadorSaludo);
+    if (contadorSaludo == 1) {
+        const saludar = document.getElementById("saludo").play();
+        bienvenida.start();
+        bienvenida.reset();
     }
-    console.log(pantallaActiva);
     const nombre = document.getElementById("inputNombre").style.display = "flex";
     const edad = document.getElementById("inputEdad").style.display = "none";
     const zona = document.getElementById("inputZona").style.display = "none";
@@ -118,8 +139,12 @@ function mostrarQA() {
 
 function mostrarEdad() {
     bienvenida.destroy();
+    const nombreValue = document.getElementById("usuarioNombre").value;
     edad = new Typed('#txtAnimado', {
         strings: [
+            '<i class="fs-4">Hola ' + nombreValue + '!</i>',
+            '<i class="fs-4">Para calcular tu huella personal necesitamos algunos datos importantes</i>',
+            '<i class="fs-4">Vamos a comenzar</i>',
             '<i class="fs-4">¿Qué edad tenés?</i>'],
 
         typeSpeed: 20,
@@ -133,6 +158,8 @@ function mostrarEdad() {
         fadeOutDelay: 50,
 
     })
+
+
     const nombre = document.getElementById("inputNombre").style.display = "none";
     const anios = document.getElementById("inputEdad").style.display = "flex";
     const zona = document.getElementById("inputZona").style.display = "none";
@@ -145,7 +172,8 @@ function mostrarZona() {
     edad.destroy();
     zona = new Typed('#txtAnimado', {
         strings: [
-            '<i class="fs-4">¿En qué región de la provincia de Neuquén vivís?</i>'],
+            '<i class="fs-4">¿En qué región de la provincia de Neuquén vivís?</i>^2000',
+            '<i class="fs-4">Si necesitas ayuda, puedes consultar en el botón de +info</i>'],
 
         typeSpeed: 20,
         backSpeed: 50,
@@ -361,13 +389,13 @@ window.onload = function () {
 };
 
 const images = ["images/imagen1.png", "images/imagen2.png", "images/imagen3.png"]; // Ruta de las imágenes
-        const imageContainer = document.getElementById("image-container");
-        let currentIndex = 0;
+const imageContainer = document.getElementById("image-container");
+let currentIndex = 0;
 
-        function changeImage() {
-            imageContainer.innerHTML = `<img src="${images[currentIndex]}" alt="Imagen ${currentIndex + 1}">`;
-            currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente índice (ciclo)
-        }
+function changeImage() {
+    imageContainer.innerHTML = `<img src="${images[currentIndex]}" alt="Imagen ${currentIndex + 1}">`;
+    currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente índice (ciclo)
+}
 
-        // Cambia la imagen cada 3 segundos (ajusta el tiempo según tus necesidades)
-        setInterval(changeImage, 500);
+// Cambia la imagen cada 3 segundos (ajusta el tiempo según tus necesidades)
+setInterval(changeImage, 500);
