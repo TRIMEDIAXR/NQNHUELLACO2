@@ -30,22 +30,24 @@
     padding: 0;
     height: 100vh;
 }
-.textBeige{
-    color:#F4DFB9 !important;
+
+.textBeige {
+    color: #F4DFB9 !important;
 }
+
 .vineta {
     height: 13vh;
     width: 95vw;
     border-radius: 20px;
     margin: 3px;
     text-align: justify;
-  text-align-last:center;
+    text-align-last: center;
 }
 
 .respuesta {
     height: 18vh;
     width: 90vw;
-    border-radius: 10px;
+    border-radius: 18px;
     background-color: rgba(99, 99, 99, 0) !important;
     backdrop-filter: blur(18px);
     border-color: rgb(255, 255, 255);
@@ -82,6 +84,7 @@
     font-size: 32px !important;
     line-height: 0 !important;
 }
+
 .form-control2 {
     text-align: center;
     background-color: rgba(255, 255, 255, 0) !important;
@@ -102,23 +105,34 @@
 }
 
 #superior {
-    height: 12vh;
+    height: 13vh;
 }
 
 #centro {
     height: 65vh;
 }
-.bordeW{
+
+.bordeW {
     border-color: rgb(255, 255, 255) !important;
     border-width: 3px !important;
     border-style: solid !important;
     border-radius: 15px !important;
 }
+.barra{
+    
+    background-color: aqua;
+    width: 100%;
+    
+    height: 100%;
+    position:fixed; /* Importante: establecer como absoluto */
+  
+}
 #inferior {
-    height: 18vh;
+    height: 16vh;
     display: flex;
     justify-content: center;
     align-content: center;
+
 }
 
 .logos {
@@ -127,8 +141,8 @@
 }
 
 .logs {
-    height: 7vh;
-    width: auto;
+    height: 7vh !important;
+    width: auto !important;
 }
 
 .preguntas {
@@ -149,9 +163,27 @@
 }
 
 .progreso {
-    height: 100% !important;
-    width: auto;
+    
+    border-color: #F4DFB9 !important;
+    border-width: 4px !important;
+    border-style: solid;
+    border-radius: 18px;
+    height: 100%;
+    padding: 0;
+    align-items: center;
+    background-color: rgba(138, 138, 138, 0.155) !important;
+    backdrop-filter: blur(18px);
 }
+
+.icons {
+    height:75% ;
+    transition: all 0.5s;
+}
+
+.icons:hover {
+    transform: scale(1.1);
+}
+
 
 .card {
     border-style: none !important;
@@ -162,16 +194,16 @@
     height: 100vh !important;
 }
 
-.frente{
+.frente {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    z-index:21;
+    z-index: 21;
     position: absolute;
     height: 100vh;
     width: 100vw;
-  }
+}
 
 
 
@@ -192,8 +224,8 @@
         background-color: rgba(99, 99, 99, 0) !important;
         padding: 0;
         display: flex;
-    justify-content: center;
-    align-content: center;
+        justify-content: center;
+        align-content: center;
     }
 }
 

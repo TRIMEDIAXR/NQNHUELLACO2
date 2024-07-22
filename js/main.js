@@ -135,7 +135,7 @@ function mostrarQA() {
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
+    // const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
 
@@ -195,7 +195,7 @@ function mostrarZona() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
+    // const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
 }
 
 function mostrarPersonas() {
@@ -221,7 +221,7 @@ function mostrarPersonas() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
+    // const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
 }
 
@@ -246,7 +246,7 @@ function mostrarSumiLuz() {
     const anios = document.getElementById("inputEdad").style.display = "none";
     const area = document.getElementById("inputZona").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
+    // const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
@@ -286,15 +286,16 @@ function compartirResultado() {
 }
 
 function mostrarPantalla() {
-    if (pantallaActiva ==0) {
+    if (pantallaActiva == 0) {
         const pantalla = document.getElementById("pantalla").style.display = "flex";
         const login = document.getElementById("loginCard").style.display = "flex";
         const info = document.getElementById("infoCard").style.display = "none";
     }
-    if (pantallaActiva >0){
+    if (pantallaActiva > 0) {
         const pantalla2 = document.getElementById("pantalla").style.display = "flex";
         const login2 = document.getElementById("loginCard").style.display = "none";
         const info2 = document.getElementById("infoCard").style.display = "flex";
+        const data= document.getElementById("data").innerHTML ="Bienvenido a nuestra aplicación de cálculo de huella de carbono. Esta herramienta está diseñada para ayudarte a entender cómo tus actividades diarias impactan en el medio ambiente, específicamente en términos de emisiones de gases de efecto invernadero. Al responder las siguientes preguntas, podrás identificar áreas clave donde podrías hacer cambios significativos para reducir tu huella de carbono y contribuir a la protección del planeta. Cada sección abordará diferentes aspectos de tu vida, desde el transporte hasta tus hábitos en el hogar y estilo de vida. ¡Empecemos!";
     }
 
 }
@@ -329,6 +330,37 @@ function avanzar() {
             break;
         default:
             comenzar();
+            break;
+    }
+}
+
+function mostrarData(boton) {
+    const pantalla = document.getElementById("pantalla").style.display = "flex";
+    const login = document.getElementById("loginCard").style.display = "none";
+    const info = document.getElementById("infoCard").style.display = "flex";
+    switch (boton.id) {
+        case "btnPerfil":
+            console.log("mostrar data perfil");
+            const dataPerfil= document.getElementById("data").innerHTML ="Estos datos son importantes para oferecer la mejor experiencia durante el cálculo de tu huella de carbono.";
+            break;
+        case "btnHogar":
+            console.log("mostrar data hogar");
+            const dataHogar= document.getElementById("data").innerHTML ="Tu hogar puede ser una fuente significativa de emisiones de carbono, dependiendo de cómo consumes energía y recursos. Esta sección explora tu uso de energía y manejo de residuos en casa.";
+            break;
+        case "btnTransporte":
+            console.log("mostrar data transporte");
+            const dataTransporte= document.getElementById("data").innerHTML ="El transporte es uno de los principales contribuyentes a las emisiones globales de carbono. Esta sección te pregunta sobre tus hábitos de transporte para evaluar el impacto de tus desplazamientos diarios y viajes frecuentes.";
+            break;
+        case "btnVida":
+            console.log("mostrar data vida");
+            const dataVida= document.getElementById("data").innerHTML ="Los hábitos diarios y decisiones de consumo personal pueden sumar significativamente a tu huella de carbono. Esta sección te ayudará a reflexionar sobre tus patrones de consumo y prácticas diarias.";
+            break;
+        case "btnExtra":
+            console.log("mostrar data extra");
+            const dataExtra= document.getElementById("data").innerHTML ="Las preguntas extra nos ayudan a mejorar la presición del cálculo personal y podemos ofrecer consejos para disminuir tu impacto ambiental";
+            break;
+
+        default:
             break;
     }
 }

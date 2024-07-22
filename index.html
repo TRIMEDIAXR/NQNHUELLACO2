@@ -22,7 +22,9 @@
                 <div class="d-flex flex-column justify-content-center align-content-center columna">
                     <div class="row justify-content-center" id="caja2">
                         <!--PANTALLA FORMULARIO LOGIN-->
-                        <form class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW" id="loginCard">
+                        <form
+                            class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW"
+                            id="loginCard">
                             <img class="m-4" src="images/huellaco2.svg" alt="huellalogin">
                             <h1 class="h3 fw-normal text-white text-center textBeige">Acceso para administradores</h1>
                             <label for="floatingInput" class="textBeige mt-4">Nombre de Admin</label>
@@ -33,15 +35,19 @@
                             <button class="btn btn-success w-100 text-white mt-4 mb-3" type="submit">Ingresar</button>
                         </form>
                         <!--PANTALLA MAS INFORMACION-->
-                        <div id="infoCard" class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW text-white fs-3">
-                            Este espacio es para agregar la info de cada sección en las preguntas.Dar ayuda para elegir una opción de respuesta o mostrar links extras.
+                        <div id="infoCard"
+                            class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW text-white fs-3">
+                            <span id="data" class="fs-5">
+                                
+                            </span>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="fondo container-fluid">
+    <div class="fondo container-fluid ">
         <header id="superior" class="row d-flex justify-content-center">
             <!-- MOSTRAR LOGIN Y LOGO -->
             <div class="col-lg-4 col-3 "></div>
@@ -51,9 +57,9 @@
             </div>
             <div class="col-lg-4 col-3  d-flex justify-content-end p-4"><a id="btnlogin" href="#"
                     onclick="mostrarPantalla()"><img src="images/login.svg" alt="login" class="logs img img-fluid"></a>
-                    <!-- MOSTRAR MAS INFO-->
-                    <a id="btnInfo" href="#"
-                    onclick="mostrarPantalla()"><img src="images/info.svg" alt="info" class="logs img img-fluid"></a>
+                <!-- MOSTRAR MAS INFO-->
+                <a id="btnInfo" href="#" onclick="mostrarPantalla()"><img src="images/info.svg" alt="info"
+                        class="logs img img-fluid"></a>
             </div>
 
         </header>
@@ -234,23 +240,29 @@
         <footer id="inferior" class="">
             <!-- MOSTRAR LOGOS PROVINCIA -->
             <div id="provincia" class="row align-items-center">
-                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/secretaria.svg"
-                        alt="secretaria" class="logs img-fluid"></div>
-                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/neuquen.svg" alt="neuquen"
-                        class="logs img-fluid"></div>
-                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/escudo.svg" alt="escudo"
-                        class="logs img-fluid"></div>
+                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/secretaria.png"
+                        alt="secretaria" class="img-fluid"></div>
+                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/neuquen.png" alt="neuquen"
+                        class="img-fluid"></div>
+                <div class="col-4 pe-4 ps-4 d-flex justify-content-center"><img src="images/gobierno.png" alt="escudo"
+                        class="img-fluid"></div>
             </div>
             <!-- MOSTRAR BOTONES DE AVANCE -->
-            <div id="botonesNav" class="row align-items-center justify justify-content-center mt-4">
-                <div class="col-3 col-sm-4 d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" id="btnVolver" onclick="retroceder()">Volver</button>
+            <div id="botonesNav" class="row align-items-center justify justify-content-between mt-3">
+                <div class="col-2 d-flex justify-content-end ">
+                    <img src="images/atr.png" alt="atr" class="img-fluid ps-3" onclick="retroceder()">
                 </div>
-                <div class="col-6 col-sm-3  d-flex justify-content-center me-0 ms-0 ps-0 pe-0">
-                    <img id="progressBar" src="images/progreso1.png" alt="login" class="img  progreso">
+                <div class="col-8">
+                    <div class=" d-flex justify-content-between progreso">
+                        <img src="images/perfilicon.png" alt="perfilicon" class="icons" onclick="mostrarData(this)" id="btnPerfil">
+                        <img src="images/hogaricon.png" alt="hogaricon" class="icons" onclick="mostrarData(this)" id="btnHogar">
+                        <img src="images/transporteicon.png" alt="transporteicon" class="icons" onclick="mostrarData(this)" id="btnTransporte">
+                        <img src="images/vidaicon.png" alt="vidaicon" class="icons" onclick="mostrarData(this)" id="btnVida">
+                        <img src="images/extraicon.png" alt="extraicon" class="icons" onclick="mostrarData(this)" id="btnExtra">
+                    </div>
                 </div>
-                <div class="col-3 col-sm-4 d-flex justify-content-start">
-                    <button type="button" class="btn btn-success" id="btnSiguiente" onclick="avanzar()">Seguir</button>
+                <div class="col-2 d-flex justify-content-center ">
+                    <img src="images/flecha.png" alt="sig" class="img-fluid pe-3" onclick="avanzar()">
                 </div>
             </div>
         </footer>
@@ -259,7 +271,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="typed.js"></script>
     <script src="js/main.js"></script>
 </body>
 
