@@ -109,7 +109,7 @@
 }
 
 #centro {
-    height: 65vh;
+    height: 62vh;
 }
 
 .bordeW {
@@ -128,7 +128,7 @@
   
 }
 #inferior {
-    height: 16vh;
+    height: 18vh;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -147,7 +147,9 @@
     height: 7vh !important;
     width: auto !important;
 }
-
+.text-color{
+    color: #F4DFB9 !important;
+}
 .preguntas {
     width: 100vw;
     display: flex;
@@ -168,16 +170,23 @@
 .progreso {
     
     border-color: #F4DFB9 !important;
-    border-width: 4px !important;
+    border-width: 0px !important;
     border-style: solid;
-    border-radius: 18px;
+    border-radius: 5px;
     height: 100%;
     padding: 0;
     align-items: center;
-    background-color: rgba(138, 138, 138, 0.155) !important;
-    backdrop-filter: blur(18px);
+    /* background-color: rgba(138, 138, 138, 0.155) !important;
+    backdrop-filter: blur(18px); */
 }
 
+
+#progressBar {
+    width: 0;
+    height: 5px;
+    background-color: #009A6B;
+    transition: width 0.4s ease; /* Esto hará que los cambios sean suaves */
+}
 .icons {
     height:75% ;
     transition: all 0.5s;

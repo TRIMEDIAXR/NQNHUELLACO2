@@ -80,11 +80,10 @@ class Usuario {
     }
 }
 
-
-
 //LISTENERS PARA VERIFICAR LA CARGA DE DATOS
 const avanceBtn = document.getElementById('avance');
 
+//window.addEventListener("keydown", function (e) { if (13 == e.keyCode) { avanzar() } });
 
 const idName = document.getElementById('usuarioNombre');
 idName.addEventListener('input', () => {
@@ -374,8 +373,6 @@ function mostrarPantalla() {
 
 //TECLAS DE CONTROL AVANCE Y RETROCESO
 
-window.addEventListener("keydown", function (e) { if (13 == e.keyCode) { avanzar() } });
-
 function avanzar() {
     //AUMENTA LA POSICION DE PANTALLAS
     pantallaActiva += 1;
@@ -530,3 +527,23 @@ function changeImage() {
 
 // Cambia la imagen cada 0.5 segundos
 setInterval(changeImage, 600);
+
+function updateProgressBar(progressValue) {
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.width = progressValue + '%';
+}
+
+function simulateProgress() {
+    let progress = 0;
+    const interval = setInterval(() => {
+        if (progress >= 40) {
+            clearInterval(interval);
+        } else {
+            progress++;
+            updateProgressBar(progress);
+        }
+    }, 100); // Cambia este valor para ajustar la velocidad de llenado
+}
+
+// Llama a la función para simular el progreso
+simulateProgress();
