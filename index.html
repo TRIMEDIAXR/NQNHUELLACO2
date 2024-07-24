@@ -23,7 +23,7 @@
                     <div class="row justify-content-center" id="caja2">
                         <!--PANTALLA FORMULARIO LOGIN-->
                         <form
-                            class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW"
+                            class="col-10 col-md-6  flex-column align-content-center justify-content-center m-4 bordeW"
                             id="loginCard">
                             <img class="m-4" src="images/huellaco2.svg" alt="huellalogin">
                             <h1 class="h3 fw-normal text-white text-center textBeige">Acceso para administradores</h1>
@@ -36,11 +36,11 @@
                         </form>
                         <!--PANTALLA MAS INFORMACION-->
                         <div id="infoCard"
-                            class="col-10 col-md-4  flex-column align-content-center justify-content-center m-4 bordeW text-white fs-3">
+                            class="col-10 col-md-6  flex-column align-content-center justify-content-center m-3 bordeW text-white">
                             <span id="data" class="fs-5">
-                                
+
                             </span>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                             <div class="respuesta text-white text-center">
                                 <input type="number" class="form-control" placeholder="EDAD"
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    aria-label="Username" maxlength="2" required>
+                                    aria-label="Username" maxlength="2" required id="usuarioEdad">
                             </div>
                         </div>
                         <!-- ZONA  -->
@@ -139,34 +139,41 @@
                                 <div class="row justify-content-center">
                                     <div class="col d-flex flex-column">
                                         <div class="form-check">
-                                            <input id="0" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="0" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="0">VACA MUERTA</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="1" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="1" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="1">CENTRO OESTE</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="2" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="2" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="2">COMARCA
                                                 PETROLERA</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="3" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="3" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="3">NORTE</label>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column">
                                         <div class="form-check">
-                                            <input id="4" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="4" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="4">CONFLUENCIA</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="5" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="5" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="5">LIMAY CENTRO</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="6" name="zonas" type="radio" class="form-check-input" required>
+                                            <input id="6" name="zonas" type="radio" class="form-check-input"
+                                                onclick="idZona(this)">
                                             <label class="form-check-label text-white" for="6">REGIÓN SUR</label>
                                         </div>
                                     </div>
@@ -249,20 +256,27 @@
             </div>
             <!-- MOSTRAR BOTONES DE AVANCE -->
             <div id="botonesNav" class="row align-items-center justify justify-content-between mt-3">
-                <div class="col-2 d-flex justify-content-end ">
-                    <img src="images/atr.png" alt="atr" class="img-fluid ps-3" onclick="retroceder()">
+                <div class="col-2 d-flex justify-content-center  pe-0 h-50">
+                    <button type="button" alt="atr" class="btn btn-outline-light pe-1 ps-1" onclick="retroceder()"
+                        id="retroceder">Back</button>
                 </div>
-                <div class="col-8">
+                <div class="col-8 pe-0 ps-0">
                     <div class=" d-flex justify-content-between progreso">
-                        <img src="images/perfilicon.png" alt="perfilicon" class="icons" onclick="mostrarData(this)" id="btnPerfil">
-                        <img src="images/transporteicon.png" alt="transporteicon" class="icons" onclick="mostrarData(this)" id="btnTransporte">
-                        <img src="images/hogaricon.png" alt="hogaricon" class="icons" onclick="mostrarData(this)" id="btnHogar">
-                        <img src="images/vidaicon.png" alt="vidaicon" class="icons" onclick="mostrarData(this)" id="btnVida">
-                        <img src="images/extraicon.png" alt="extraicon" class="icons" onclick="mostrarData(this)" id="btnExtra">
+                        <img src="images/perfilicon.png" alt="perfilicon" class="icons" onclick="mostrarData(this)"
+                            id="btnPerfil">
+                        <img src="images/transporteicon.png" alt="transporteicon" class="icons"
+                            onclick="mostrarData(this)" id="btnTransporte">
+                        <img src="images/hogaricon.png" alt="hogaricon" class="icons" onclick="mostrarData(this)"
+                            id="btnHogar">
+                        <img src="images/vidaicon.png" alt="vidaicon" class="icons" onclick="mostrarData(this)"
+                            id="btnVida">
+                        <img src="images/extraicon.png" alt="extraicon" class="icons" onclick="mostrarData(this)"
+                            id="btnExtra">
                     </div>
                 </div>
-                <div class="col-2 d-flex justify-content-center ">
-                    <img src="images/flecha.png" alt="sig" class="img-fluid pe-3" onclick="avanzar()">
+                <div class="col-2 d-flex justify-content-center ps-0 h-50">
+                    <button type="button" alt="sig" class="btn btn-outline-light pe-1 ps-1" onclick="avanzar()" disabled
+                        id="avance">Next</button>
                 </div>
             </div>
         </footer>

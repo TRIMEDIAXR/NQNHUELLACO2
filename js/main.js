@@ -1,6 +1,9 @@
 const pantalla = document.getElementById("pantalla").style.display = "none";
+//SALUDA SOLO UNA VEZ CON EL AUDIO ASÍ NO SE VUELVE REPETITIVO 
 let contadorSaludo = 0;
 
+
+//TEXTOS ANIMADOS
 var bienvenida = new Typed('#txtAnimado', {
     strings: [
         '<i class="fs-4">¡Hola!Te damos la bienvenida a nuestra calculadora de huella de carbono.</i>',
@@ -18,6 +21,7 @@ var bienvenida = new Typed('#txtAnimado', {
     fadeOutDelay: 50,
 
 })
+
 var edad;
 let zona;
 let personas;
@@ -25,7 +29,7 @@ let sumiluz;
 
 var placeNombre = new Typed('#usuarioNombre', {
     strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
-    startDelay: 7000,
+    startDelay: 700,
     typeSpeed: 40,
     backSpeed: 40,
     attr: 'placeholder',
@@ -34,26 +38,13 @@ var placeNombre = new Typed('#usuarioNombre', {
     loop: true
 });
 
-var placeEdad = new Typed('#usuarioNombre', {
-    strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
-    startDelay: 7000,
-    typeSpeed: 40,
-    backSpeed: 40,
-    attr: 'placeholder',
-    bindInputFocusEvents: true,
-    showCursor: true,
-    loop: true
-});
-
-
+//CREACION DE USUARIO CON LAS VARIABLES E INFORMACION A GUARDAR
 class Usuario {
-    constructor(nombre, apellido, edad, telefono, mail, region, consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
+    constructor(nombre, edad, mail, zona, consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.edad = edad;
-        this.telefono = telefono;
         this.mail = mail;
-        this.region = region;
+        this.zona = zona;
         this.consumoTotal = consumoTotal;
         this.categoria = categoria;
         this.fecha = fecha;
@@ -89,12 +80,35 @@ class Usuario {
     }
 }
 
-let factoresEmisionCO2 = { auto: "skk", colectivo: "" };
-let frasesBienvenida = [];
+
+
+//LISTENERS PARA VERIFICAR LA CARGA DE DATOS
+const avanceBtn = document.getElementById('avance');
+
+
+const idName = document.getElementById('usuarioNombre');
+idName.addEventListener('input', () => {
+    const texto = idName.value.trim();
+    avanceBtn.disabled = texto === '';
+});
+
+const idEdad = document.getElementById('usuarioEdad');
+idEdad.addEventListener('input', () => {
+    const texto = idEdad.value.trim();
+    avanceBtn.disabled = texto === '';
+});
+
+
+
+//DEFINE EL ORDEN DE LAS PANTALLAS Y EL AVANCE Y RETROCESO
 let pantallaActiva = 0;
 
-//SE EJECUTA AL CARGA LA PAGINA
+//SE EJECUTA PARA CARGA LA PAGINA PRINCIPAL
 comenzar();
+//SE CREA EL NUEVO USUARIO
+const usuario = new Usuario;
+console.log(usuario);
+
 
 //COMIENZA LA APLICACION
 function comenzar() {
@@ -108,13 +122,19 @@ function comenzar() {
     pantallaActiva = 0;
     bienvenida.reset();
     bienvenida.start();
-    bienvenida.stop();
-    console.log(pantallaActiva);
 }
+
+
+
+
 
 ////////////////////////COMIENZA LA CAPTURA DE DATOS PERSONALES///////////////////
 
 function mostrarQA() {
+    const avanceBtn = document.getElementById('avance');
+    if (usuario.nombre!=undefined ) {
+        avanceBtn.disabled=false;
+    }
     contadorSaludo += 1;
     const main = document.getElementById("main").style.display = "none";
     const qa = document.getElementById("qa").style.display = "flex";
@@ -135,11 +155,15 @@ function mostrarQA() {
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    // const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
+
 }
 
 
 function mostrarEdad() {
+    if (idEdad.value.trim() === '') {
+        const avanceBtn = document.getElementById('avance').disabled = true;
+    }
+
     bienvenida.destroy();
     const nombreValue = document.getElementById("usuarioNombre").value;
     edad = new Typed('#txtAnimado', {
@@ -171,6 +195,11 @@ function mostrarEdad() {
 }
 
 function mostrarZona() {
+    const avanceBtn = document.getElementById('avance');
+    if (usuario.zona==undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
     edad.destroy();
     zona = new Typed('#txtAnimado', {
         strings: [
@@ -195,8 +224,53 @@ function mostrarZona() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    // const progresBar = document.getElementById("progressBar").src = "images/progreso1.png";
+
 }
+
+function idZona(boton) {
+    avanceBtn.disabled = false;
+    
+    switch (boton.id) {
+        case "0":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Vaca Muerta";
+            console.log(usuario);
+            break;
+        case "1":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Centro Oeste";
+            console.log(usuario);
+            break;
+        case "2":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Comarca";
+            console.log(usuario);
+            break;
+        case "3":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Norte";
+            console.log(usuario);
+            break;
+        case "4":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Confluencia";
+            console.log(usuario);
+            break;
+        case "5":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Limay Centro";
+            console.log(usuario);
+            break;
+        case "6":
+            //GUARDO LA ZONA AL TOCAR LA OPCION
+            usuario.zona = "Region Sur";
+            console.log(usuario);
+            break;
+        default:
+            break;
+    }
+}
+
 
 function mostrarPersonas() {
     zona.destroy();
@@ -221,7 +295,6 @@ function mostrarPersonas() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    // const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
 }
 
@@ -246,7 +319,6 @@ function mostrarSumiLuz() {
     const anios = document.getElementById("inputEdad").style.display = "none";
     const area = document.getElementById("inputZona").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    // const progresBar = document.getElementById("progressBar").src = "images/progreso2.png";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
@@ -295,17 +367,18 @@ function mostrarPantalla() {
         const pantalla2 = document.getElementById("pantalla").style.display = "flex";
         const login2 = document.getElementById("loginCard").style.display = "none";
         const info2 = document.getElementById("infoCard").style.display = "flex";
-        const data= document.getElementById("data").innerHTML ="Bienvenido a nuestra aplicación de cálculo de huella de carbono. Esta herramienta está diseñada para ayudarte a entender cómo tus actividades diarias impactan en el medio ambiente, específicamente en términos de emisiones de gases de efecto invernadero. Al responder las siguientes preguntas, podrás identificar áreas clave donde podrías hacer cambios significativos para reducir tu huella de carbono y contribuir a la protección del planeta. Cada sección abordará diferentes aspectos de tu vida, desde el transporte hasta tus hábitos en el hogar y estilo de vida. ¡Empecemos!";
+        const data = document.getElementById("data").innerHTML = "Bienvenido a nuestra aplicación de cálculo de huella de carbono. Esta herramienta está diseñada para ayudarte a entender cómo tus actividades diarias impactan en el medio ambiente, específicamente en términos de emisiones de gases de efecto invernadero. Al responder las siguientes preguntas, podrás identificar áreas clave donde podrías hacer cambios significativos para reducir tu huella de carbono y contribuir a la protección del planeta. Cada sección abordará diferentes aspectos de tu vida, desde el transporte hasta tus hábitos en el hogar y estilo de vida. ¡Empecemos!";
     }
 
 }
 
-//TECLAS DE CONTROL
+//TECLAS DE CONTROL AVANCE Y RETROCESO
+
 window.addEventListener("keydown", function (e) { if (13 == e.keyCode) { avanzar() } });
+
 function avanzar() {
     //AUMENTA LA POSICION DE PANTALLAS
     pantallaActiva += 1;
-    console.log(pantallaActiva);
     switch (pantallaActiva) {
         case 0:
             comenzar();
@@ -314,9 +387,17 @@ function avanzar() {
             mostrarQA();
             break;
         case 2:
+            //GUARDO EL NOMBRE INGRESADO AL TOCAR AVANZAR
+            const idname = document.getElementById("usuarioNombre").value;
+            usuario.nombre = idname;
+            console.log(usuario);
             mostrarEdad();
             break;
         case 3:
+            //GUARDO LA EDAD AL TOCAR AVANZAR
+            const idEdad = document.getElementById("usuarioEdad").value;
+            usuario.edad = idEdad;
+            console.log(usuario);
             mostrarZona();
             break;
         case 4:
@@ -332,6 +413,12 @@ function avanzar() {
             comenzar();
             break;
     }
+
+
+
+
+
+
 }
 
 function mostrarData(boton) {
@@ -341,23 +428,23 @@ function mostrarData(boton) {
     switch (boton.id) {
         case "btnPerfil":
             console.log("mostrar data perfil");
-            const dataPerfil= document.getElementById("data").innerHTML ="Estos datos son importantes para oferecer la mejor experiencia durante el cálculo de tu huella de carbono.";
+            const dataPerfil = document.getElementById("data").innerHTML = "Estos datos son importantes para oferecer la mejor experiencia durante el cálculo de tu huella de carbono.";
             break;
         case "btnHogar":
             console.log("mostrar data hogar");
-            const dataHogar= document.getElementById("data").innerHTML ="Tu hogar puede ser una fuente significativa de emisiones de carbono, dependiendo de cómo consumes energía y recursos. Esta sección explora tu uso de energía y manejo de residuos en casa.";
+            const dataHogar = document.getElementById("data").innerHTML = "Tu hogar puede ser una fuente significativa de emisiones de carbono, dependiendo de cómo consumes energía y recursos. Esta sección explora tu uso de energía y manejo de residuos en casa.";
             break;
         case "btnTransporte":
             console.log("mostrar data transporte");
-            const dataTransporte= document.getElementById("data").innerHTML ="El transporte es uno de los principales contribuyentes a las emisiones globales de carbono. Esta sección te pregunta sobre tus hábitos de transporte para evaluar el impacto de tus desplazamientos diarios y viajes frecuentes.";
+            const dataTransporte = document.getElementById("data").innerHTML = "El transporte es uno de los principales contribuyentes a las emisiones globales de carbono. Esta sección te pregunta sobre tus hábitos de transporte para evaluar el impacto de tus desplazamientos diarios y viajes frecuentes.";
             break;
         case "btnVida":
             console.log("mostrar data vida");
-            const dataVida= document.getElementById("data").innerHTML ="Los hábitos diarios y decisiones de consumo personal pueden sumar significativamente a tu huella de carbono. Esta sección te ayudará a reflexionar sobre tus patrones de consumo y prácticas diarias.";
+            const dataVida = document.getElementById("data").innerHTML = "Los hábitos diarios y decisiones de consumo personal pueden sumar significativamente a tu huella de carbono. Esta sección te ayudará a reflexionar sobre tus patrones de consumo y prácticas diarias.";
             break;
         case "btnExtra":
             console.log("mostrar data extra");
-            const dataExtra= document.getElementById("data").innerHTML ="Las preguntas extra nos ayudan a mejorar la presición del cálculo personal y podemos ofrecer consejos para disminuir tu impacto ambiental";
+            const dataExtra = document.getElementById("data").innerHTML = "Las preguntas extra nos ayudan a mejorar la presición del cálculo personal y podemos ofrecer consejos para disminuir tu impacto ambiental";
             break;
 
         default:
@@ -368,7 +455,6 @@ function mostrarData(boton) {
 function retroceder() {
     //REDUCE LA POSICION DE PANTALLAS
     pantallaActiva -= 1;
-    console.log(pantallaActiva);
     switch (pantallaActiva) {
         case 0:
             comenzar();
@@ -421,6 +507,7 @@ function retroceder() {
     }
 }
 
+// SALIR DE PANTALLA FLOTANTE CON INFO
 window.onload = function () {
 
     document.onclick = function (e) {
@@ -431,6 +518,7 @@ window.onload = function () {
     };
 };
 
+// ANIMACION HUELLITA
 const images = ["images/imagen1.png", "images/imagen2.png", "images/imagen3.png"]; // Ruta de las imágenes
 const imageContainer = document.getElementById("image-container");
 let currentIndex = 0;
@@ -440,5 +528,5 @@ function changeImage() {
     currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente índice (ciclo)
 }
 
-// Cambia la imagen cada 3 segundos (ajusta el tiempo según tus necesidades)
-setInterval(changeImage, 500);
+// Cambia la imagen cada 0.5 segundos
+setInterval(changeImage, 600);

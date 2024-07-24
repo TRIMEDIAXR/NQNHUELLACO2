@@ -134,6 +134,9 @@
     align-content: center;
 
 }
+.disable{
+    opacity: 30%;
+}
 
 .logos {
     height: 10vh;
