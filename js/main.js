@@ -1,7 +1,7 @@
 const pantalla = document.getElementById("pantalla").style.display = "none";
 //SALUDA SOLO UNA VEZ CON EL AUDIO ASÍ NO SE VUELVE REPETITIVO 
 let contadorSaludo = 0;
-
+let contadorPreguntas=0;
 
 //TEXTOS ANIMADOS
 var bienvenida = new Typed('#txtAnimado', {
@@ -24,8 +24,10 @@ var bienvenida = new Typed('#txtAnimado', {
 
 var edad;
 let zona;
+let tipoVehiculo;
 let personas;
 let sumiluz;
+
 
 var placeNombre = new Typed('#usuarioNombre', {
     strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
@@ -40,11 +42,12 @@ var placeNombre = new Typed('#usuarioNombre', {
 
 //CREACION DE USUARIO CON LAS VARIABLES E INFORMACION A GUARDAR
 class Usuario {
-    constructor(nombre, edad, mail, zona, consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
+    constructor(nombre, edad, mail, zona, tipoVehiculo,consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
         this.nombre = nombre;
         this.edad = edad;
         this.mail = mail;
         this.zona = zona;
+        this.tipoVehiculo = tipoVehiculo;
         this.consumoTotal = consumoTotal;
         this.categoria = categoria;
         this.fecha = fecha;
@@ -130,9 +133,11 @@ function comenzar() {
 ////////////////////////COMIENZA LA CAPTURA DE DATOS PERSONALES///////////////////
 
 function mostrarQA() {
+    contadorPreguntas++;
+    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
     const avanceBtn = document.getElementById('avance');
-    if (usuario.nombre!=undefined ) {
-        avanceBtn.disabled=false;
+    if (usuario.nombre != undefined) {
+        avanceBtn.disabled = false;
     }
     contadorSaludo += 1;
     const main = document.getElementById("main").style.display = "none";
@@ -154,11 +159,14 @@ function mostrarQA() {
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
+    
 }
 
 
 function mostrarEdad() {
+    contadorPreguntas++;
+    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
     if (idEdad.value.trim() === '') {
         const avanceBtn = document.getElementById('avance').disabled = true;
     }
@@ -191,11 +199,14 @@ function mostrarEdad() {
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
 }
 
 function mostrarZona() {
+    contadorPreguntas++;
+    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
     const avanceBtn = document.getElementById('avance');
-    if (usuario.zona==undefined) {
+    if (usuario.zona == undefined) {
         console.log("entró")
         avanceBtn.disabled = true;
     }
@@ -223,12 +234,13 @@ function mostrarZona() {
     const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
     const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
     const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
 
 }
 
 function idZona(boton) {
     avanceBtn.disabled = false;
-    
+
     switch (boton.id) {
         case "0":
             //GUARDO LA ZONA AL TOCAR LA OPCION
@@ -237,7 +249,7 @@ function idZona(boton) {
             break;
         case "1":
             //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Centro Oeste";
+            usuario.zona = "Region Sur";
             console.log(usuario);
             break;
         case "2":
@@ -262,7 +274,7 @@ function idZona(boton) {
             break;
         case "6":
             //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Region Sur";
+            usuario.zona = "Centro Sur";
             console.log(usuario);
             break;
         default:
@@ -270,6 +282,16 @@ function idZona(boton) {
     }
 }
 
+function mostrarVehiculo(){
+    zona.destroy();
+    contadorPreguntas++;
+    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
+
+
+    
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "flex";
+    
+}
 
 function mostrarPersonas() {
     zona.destroy();
@@ -398,7 +420,7 @@ function avanzar() {
             mostrarZona();
             break;
         case 4:
-            mostrarPersonas();
+            mostrarVehiculo();
             break;
         case 5:
             mostrarSumiLuz();
@@ -535,14 +557,33 @@ function updateProgressBar(progressValue) {
 
 function simulateProgress() {
     let progress = 0;
-    const interval = setInterval(() => {
-        if (progress >= 30) {
-            clearInterval(interval);
-        } else {
-            progress++;
-            updateProgressBar(progress);
-        }
-    }, 100); // Cambia este valor para ajustar la velocidad de llenado
+    switch (pantallaActiva) {
+        case 4:
+            const interval = setInterval(() => {
+                if (progress >= 33) {// Porcentaje de llenado
+                    clearInterval(interval);
+                } else {
+                    progress++;
+                    updateProgressBar(progress);
+                }
+            }, 20);// Cambia este valor para ajustar la velocidad de llenado
+        break;
+        case 11:
+            const interval2 = setInterval(() => {
+                if (progress >= 66) {// Porcentaje de llenado
+                    clearInterval(interval);
+                } else {
+                    progress++;
+                    updateProgressBar(progress);
+                }
+            }, 20);// Cambia este valor para ajustar la velocidad de llenado
+        break;
+
+        default:
+            break;
+    }
+
+
 }
 
 // Llama a la función para simular el progreso

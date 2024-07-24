@@ -190,10 +190,10 @@
 .icons:hover {
     transform: scale(1.2);
 }
-.btn-outline-light{
+.btn-outline-primary{
     border-width: 0px !important; 
 }
-.btn-outline-light:hover{
+.btn-outline-primary:hover{
     background-color: rgba(255, 255, 255, 0) !important;
 }
 .hover-btn{
@@ -238,7 +238,7 @@
     .respuesta2 {
         height: 45vh;
         width: 90vw;
-        border-radius: 10px;
+        border-radius: 2px;
         margin: 0;
         background-color: rgba(99, 99, 99, 0) !important;
         padding: 0;
