@@ -536,7 +536,7 @@ function updateProgressBar(progressValue) {
 function simulateProgress() {
     let progress = 0;
     const interval = setInterval(() => {
-        if (progress >= 40) {
+        if (progress >= 30) {
             clearInterval(interval);
         } else {
             progress++;

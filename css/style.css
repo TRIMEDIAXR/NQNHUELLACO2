@@ -99,17 +99,17 @@
 .huellita {
     min-height: 20vh;
     width: auto;
-    height: 25vh !important;
+    height: 22vh !important;
     display: flex;
     justify-content: center;
 }
 
 #superior {
-    height: 13vh;
+    height: 11vh;
 }
 
 #centro {
-    height: 62vh;
+    height: 63vh;
 }
 
 .bordeW {
@@ -118,15 +118,7 @@
     border-style: solid !important;
     border-radius: 15px !important;
 }
-.barra{
-    
-    background-color: aqua;
-    width: 100%;
-    
-    height: 100%;
-    position:fixed; /* Importante: establecer como absoluto */
-  
-}
+
 #inferior {
     height: 18vh;
     display: flex;
@@ -173,18 +165,21 @@
     border-width: 0px !important;
     border-style: solid;
     border-radius: 5px;
-    height: 100%;
+    height: 56% !important;
     padding: 0;
     align-items: center;
     /* background-color: rgba(138, 138, 138, 0.155) !important;
     backdrop-filter: blur(18px); */
+    overflow: visible !important;
 }
-
+.barrita{
+    padding: 0px;
+}
 
 #progressBar {
     width: 0;
     height: 5px;
-    background-color: #009A6B;
+    background-color: #F4DFB9;
     transition: width 0.4s ease; /* Esto hará que los cambios sean suaves */
 }
 .icons {
@@ -193,9 +188,21 @@
 }
 
 .icons:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
+.btn-outline-light{
+    border-width: 0px !important; 
+}
+.btn-outline-light:hover{
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+.hover-btn{
+    transition: all 1s;
 
+}
+.hover-btn:hover{
+    transform: scale(1.2) !important;
+}
 
 .card {
     border-style: none !important;
