@@ -274,7 +274,7 @@ function idZona(boton) {
             break;
         case "6":
             //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Centro Sur";
+            usuario.zona = "Centro Oeste";
             console.log(usuario);
             break;
         default:
@@ -286,11 +286,20 @@ function mostrarVehiculo(){
     zona.destroy();
     contadorPreguntas++;
     const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
+    if (usuario.tipoVehiculo == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
 
 
-    
+    const area = document.getElementById("inputZona").style.display = "none";
     const vehiculo = document.getElementById("inputVehiculo").style.display = "flex";
-    
+}
+
+function idVehiculo(){
+    avanceBtn.disabled = false;
+
+
 }
 
 function mostrarPersonas() {
@@ -488,7 +497,7 @@ function retroceder() {
             mostrarZona();
             break;
         case 4:
-            mostrarPersonas();
+            mostrarVehiculo();
             break;
         case 5:
             mostrarSumiLuz();
