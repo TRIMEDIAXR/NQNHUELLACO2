@@ -50,8 +50,8 @@
         <header id="superior" class="row d-flex justify-content-center">
             <!-- MOSTRAR LOGIN Y LOGO -->
             <div class="col-lg-3 col-2 "></div>
-            <div class="col-lg-4 col-6  d-flex justify-content-center align-content-start"><a onclick="comenzar()" href="#"
-                    class="d-flex align-items-start mt-2"><img src="images/huellaco2.svg" alt="logoHuella"
+            <div class="col-lg-4 col-6  d-flex justify-content-center align-content-start"><a onclick="comenzar()"
+                    href="#" class="d-flex align-items-start mt-2"><img src="images/huellaco2.svg" alt="logoHuella"
                         class="logs img img-fluid"></a>
             </div>
             <div class="col-lg-3 col-2  d-flex justify-content-end align-content-start mt-2"><a id="btnlogin" href="#"
@@ -64,7 +64,7 @@
         </header>
         <main id="centro" class="row d-flex justify-content-center w-100 p-0 m-0 ">
             <!-- MOSTRAR INICIO -->
-            <section id="main" class="col-sm-4 col-10" onclick="mostrarQA()">
+            <section id="main" class="col-sm-4 col-10" onclick="mostrarPreguntas()">
                 <div id="carouselExampleCaptions" class="carousel slide h-100 carousel-fade" data-bs-ride="carousel">
 
                     <div class="carousel-inner h-100">
@@ -100,7 +100,7 @@
                 </div>
             </section>
             <!-- MOSTRAR HUELLITA CONSULTAS -->
-            <section id="qa" class="col-12 ">
+            <section id="listaPreguntas" class="col-12 ">
                 <audio src="audio/bienvenida.mp3" id="saludo"></audio>
                 <div class="row pe-1 ps-1 justify-content-center">
                     <div class="col-12">
@@ -116,116 +116,362 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <!-- NOMBRE  -->
-                        <div id="inputNombre" class="row justify-content-center">
-                            <div class="respuesta text-white text-center">
-                                <input type="text" class="form-control" placeholder="" aria-label="Username"
-                                    maxlength="30" required id="usuarioNombre">
-                            </div>
-                        </div>
-                        <!-- EDAD  -->
-                        <div id="inputEdad" class="row justify-content-center">
-                            <div class="respuesta text-white text-center">
-                                <input type="number" class="form-control" placeholder="EDAD"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    aria-label="Username" maxlength="2" required id="usuarioEdad">
-                            </div>
-                        </div>
-                        <!-- ZONA  -->
-                        <div id="inputZona" class="row justify-content-center">
-                            <div class="respuesta2 text-white text-center">
-                                <div class="row justify-content-center">
-                                    <div class="col d-flex flex-column">
-                                        <button type="button" class="btn btn-outline-light " id="0" onclick="idZona(this)">VACA MUERTA</button>
-                                        <button type="button" class="btn btn-outline-light " id="1" onclick="idZona(this)">REGIÓN SUR</button>
-                                        <button type="button" class="btn btn-outline-light " id="2" onclick="idZona(this)">COMARCA</button>
-                                        <button type="button" class="btn btn-outline-light " id="3" onclick="idZona(this)">NORTE</button>
-                                    </div>
-                                    <div class="col d-flex flex-column">
-                                        <button type="button" class="btn btn-outline-light " id="4" onclick="idZona(this)">CONFLUENCIA</button>
-                                        <button type="button" class="btn btn-outline-light " id="5" onclick="idZona(this)">LIMAY CENTRO</button>
-                                        <button type="button" class="btn btn-outline-light " id="6" onclick="idZona(this)">CENTRO OESTE</button>
-                                    </div>
 
-
+                    <div class="col-12" id="listaPreguntas">
+                        <!-- GRUPO DE PREGUNTAS PERFIL -->
+                        <div class="row pe-1 ps-1 justify-content-center" id="divPerfil">
+                            <!-- NOMBRE  -->
+                            <div id="inputNombre" class="row justify-content-center">
+                                <div class="respuesta text-white text-center">
+                                    <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                        maxlength="30" required id="usuarioNombre">
                                 </div>
                             </div>
-                        </div>
-                        <!-- TIPO DE VEHICULO  -->
-                        <div id="inputVehiculo" class="row justify-content-center">
-                            <div class="respuesta2 text-white text-center">
-                                <div class="row justify-content-center">
-                                    <div class="col d-flex flex-column">
-                                        <button type="button" class="btn btn-outline-light " id="0" onclick="idVehiculo(this)">Gasolina</button>
-                                        <button type="button" class="btn btn-outline-light " id="1" onclick="idVehiculo(this)">Diésel</button>
-                                        <button type="button" class="btn btn-outline-light " id="2" onclick="idVehiculo(this)">Híbrido</button>
-                                        
-                                    </div>
-                                    <div class="col d-flex flex-column">
-                                        <button type="button" class="btn btn-outline-light " id="3" onclick="idVehiculo(this)">Eléctrico</button>
-                                        <button type="button" class="btn btn-outline-light " id="4" onclick="idVehiculo(this)">No uso vehículo</button>
+                            <!-- EDAD  -->
+                            <div id="inputEdad" class="row justify-content-center">
+                                <div class="respuesta text-white text-center">
+                                    <input type="number" class="form-control" placeholder="EDAD"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        aria-label="Username" maxlength="2" required id="usuarioEdad">
+                                </div>
+                            </div>
+                            <!-- ZONA  -->
+                            <div id="inputZona" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light " value="VACA MUERTA"
+                                                onclick="idZona(this)">VACA MUERTA</button>
+                                            <button type="button" class="btn btn-outline-light " value="REGIÓN SUR"
+                                                onclick="idZona(this)">REGIÓN SUR</button>
+                                            <button type="button" class="btn btn-outline-light " value="COMARCA"
+                                                onclick="idZona(this)">COMARCA</button>
+                                            <button type="button" class="btn btn-outline-light " value="NORTE"
+                                                onclick="idZona(this)">NORTE</button>
+                                        </div>
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light " value="CONFLUENCIA"
+                                                onclick="idZona(this)">CONFLUENCIA</button>
+                                            <button type="button" class="btn btn-outline-light " value="LIMAY CENTRO"
+                                                onclick="idZona(this)">LIMAY CENTRO</button>
+                                            <button type="button" class="btn btn-outline-light " value="CENTRO OESTE"
+                                                onclick="idZona(this)">CENTRO OESTE</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- HOGAR-CANTIDAD DE PERSONAS  -->
-                        <div id="inputPersonas" class="row justify-content-center">
-                            <div class="respuesta text-white text-center">
-                                <input type="number" class="form-control" placeholder="CANTIDAD"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    aria-label="Username" maxlength="2" required>
-                            </div>
-                        </div>
-                        <!-- HOGAR-SUMINISTRO ELECTRICO  -->
+                        <!-- GRUPO DE PREGUNTAS DE TRANSPORTE -->
+                        <div class="row pe-1 ps-1 justify-content-center" id="divTransporte">
+                            <!-- TIPO DE VEHICULO  -->
+                            <div id="inputVehiculo" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVehiculo(this)">Gasolina</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVehiculo(this)">Diésel</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVehiculo(this)">Híbrido</button>
 
-                        <div id="inputSumiLuz" class="row justify-content-center">
-                            <div class="respuesta2 text-white text-center">
-                                <div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="luz1">
-                                        <label class="form-check-label text-white fs3" for="luz1">Energía de Red</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="luz2">
-                                        <label class="form-check-label text-white fs3" for="luz2">Energía Solar</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="luz3">
-                                        <label class="form-check-label text-white fs3" for="luz3">Generador
-                                            Eléctrico</label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                        <!-- CONSUMO LUZ -->
-                        <div id="inputConsumo" class="row justify-content-center">
-                            <div class="respuesta2 text-white text-center">
-                                <div class="">
-                                    <div class="form-check">
-                                        <input id="CONSUMO1" name="zonas" type="radio" class="form-check-input"
-                                            required>
-                                        <label class="form-check-label text-white" for="CONSUMO1">MAS DE 150KW
-                                            MENSUAL</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input id="CONSUMO2" name="zonas" type="radio" class="form-check-input"
-                                            required>
-                                        <label class="form-check-label text-white" for="CONSUMO2">150KW PROMEDIO
-                                            MENSUAL</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input id="CONSUMO3" name="zonas" type="radio" class="form-check-input"
-                                            required>
-                                        <label class="form-check-label text-white" for="CONSUMO3">MENOS DE 150KW
-                                            MENSUAL</label>
+                                        </div>
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVehiculo(this)">Eléctrico</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVehiculo(this)">No uso vehículo</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- CANTIDAD DE KILOMETROS  -->
+                            <div id="cantKilometros" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idKilometros(this)">Menos de 50km</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idKilometros(this)">50 a 150km</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idKilometros(this)">Más de 150km</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TRANSPORTE PUBLICO  -->
+                            <div id="tPublico" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idTransporte(this)">No utilizo</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idTransporte(this)">1 a 2 días</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idTransporte(this)">3 a 5 días</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idTransporte(this)">Más de 5 días</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CANTIDAD DE VUELOS  -->
+                            <div id="vuelos" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVuelos(this)">Ninguno</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVuelos(this)">1 a 3 vuelos</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idVuelos(this)">Más de 3 vuelos</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BICI Y CAMINATAS  -->
+                            <div id="bicicamina" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idBiciCamina(this)">No</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idBiciCamina(this)">1 a 2 días</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idBiciCamina(this)">3 a 5 días</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idBiciCamina(this)">Todos los días</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CARPOOLING  -->
+                            <div id="carpooling" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idCarpooling(this)">No</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idCarpooling(this)">Sí, 1 a 2 días</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idCarpooling(this)">Sí, 3 o más días</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- EFICIENCIA DE AUTOMOVIL  -->
+                            <div id="efiEnergia" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idEficiencia(this)">Menos de 10km/litro</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idEficiencia(this)">10 a 15km/litro</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idEficiencia(this)">Más de 15km/litro</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- GRUPO DE PREGUNTAS DEL HOGAR -->
+                        <div class="row pe-1 ps-1 justify-content-center" id="divHogar">
+                            <!-- HOGAR-SUMINISTRO ELECTRICO  -->
+                            <div id="energia" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="electrica" value="1"
+                                                    onclick="guardarEnergia(this)">
+                                                <label class="form-check-label" for="electrica">Eléctrica
+                                                    Convencional</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gasNatural"
+                                                    value="2" onclick="guardarEnergia(this)">
+                                                <label class="form-check-label" for="gasNatural">Gas Natural</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gasEnvasado"
+                                                    value="3" onclick="guardarEnergia(this)">
+                                                <label class="form-check-label" for="gasEnvasado">Gas Envasado</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="renovables"
+                                                    value="4" onclick="guardarEnergia(this)">
+                                                <label class="form-check-label" for="renovables">Energías
+                                                    Renovables</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TAMAÑO DE VIVIENDA -->
+                            <div id="sizeVivienda" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idtamanio(this)">Menos de 50 m²</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idtamanio(this)">50 a 100m²</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idtamanio(this)">Más de 100m²</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--CANTIDAD DE PERSONAS  -->
+                            <div id="cantPersonas" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idPersonas(this)">1 a 2 personas</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idPersonas(this)">3 a 4 personas</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idPersonas(this)">Más de 4 personas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--CONSUMO DE ELECTRODOMESTICOS  -->
+                            <div id="electrosConsumo" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idElectros(this)">Uso limitado de electros grandes</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idElectros(this)">Uso moderado</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idElectros(this)">Uso frecuente de múltiples electros</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--RECICLAJE -->
+                            <div id="reciclaje" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idReciclaje(this)">No reciclo</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idReciclaje(this)">Reciclo algunos materiales</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idReciclaje(this)">reciclo la mayoría de materiales</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--CONSUMO DE DISPOSITIVOS PERMANENTES-->
+                            <div id="conDispositivos" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idDisposi(this)">Ninguno</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idDisposi(this)">1 a 5 dispositivos</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idDisposi(this)">6 a 10 dispositivos</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idDisposi(this)">Más de 10 dispositivos</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--TIPO DE ENERGIAS RENOVABLES Y USO-->
+                            <div id="tipoRenovables" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idRenovable(this)">Sí,y cubro el consumo total de mi
+                                                hogar</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idRenovable(this)">Sí, pero complemento con energía
+                                                convencional</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idRenovable(this)">No, pero planeo instalar en el
+                                                futuro</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idRenovable(this)">No tengo y no planeo instalar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- GRUPO DE PREGUNTAS DE ESTILO DE VIDA -->
+                        <div class="row pe-1 ps-1 justify-content-center" id="divVida">
+                            <!--CONSUMO DE AGUA DIARIO-->
+                            <div id="aguaConsumo" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idAgua(this)">Menos de 50 litros</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idAgua(this)">51 a 100 litros</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idAgua(this)">101 a 150 litros</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idAgua(this)">Más de 150 litros</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--CONSUMO DE PRODUCTOS LOCALES-->
+                            <div id="locales" class="row justify-content-center">
+                                <div class="respuesta2 text-white text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col d-flex flex-column">
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idLocales(this)">Siempre compro productos locales y de
+                                                temporada</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idLocales(this)">A menudo compro productos locales</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idLocales(this)">Regularmente compro productos
+                                                importados</button>
+                                            <button type="button" class="btn btn-outline-light "
+                                                onclick="idLocales(this)">Principalmente compro productos importados y
+                                                fuera de temporada</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- CALCULAR RESULTADO FINAL -->
+                        <div class="row pe-1 ps-1 justify-content-center" id="divFinal">
+                            <!--PANTALLA CALCULAR-->
+                            <div id="calcular" class="row justify-content-center">
+                                <form class="respuesta3 text-white text-center ">
+                                    <input type="email" class="form-control" placeholder="tu mail aquí"
+                                        aria-label="Username" maxlength="50" id="usuarioMail" autocomplete="email" pattern="[^@]*@[^@]*">
+                                    <div class="">
+                                        <input class="form-check-input" type="checkbox" id="mail" value="mail"
+                                            onclick="opcionMail(this)">
+                                        <label class="form-check-label" for="mail">No deseo info al mail</label>
+                                    </div>
+
+                                    <button type="button" class="btn btn-outline-light mt-5"
+                                        onclick="calcularHuella(this)" disabled id="btnCalcular">Calcular Resultado</button>
+                                </form>
+                            </div>
+
+                        </div>
+
                     </div>
 
             </section>
@@ -248,9 +494,10 @@
                         id="retroceder"><img src="images/atr.png" alt="atras" class="img img-fluid hover-btn"></button>
                 </div>
                 <div class="col-6 pe-2 ps-2 d-flex flex-column h-100">
-                    <div class="d-flex justify-content-center"> <span class="text-color text-center" id="preguntas"> </span></div>
+                    <div class="d-flex justify-content-center"> <span class="text-color text-center" id="preguntas">
+                        </span></div>
                     <div class=" d-flex justify-content-between progreso">
-                        
+
                         <img src="images/transporteicon.png" alt="transporteicon" class="icons"
                             onclick="mostrarData(this)" id="btnTransporte">
                         <img src="images/hogaricon.png" alt="hogaricon" class="icons" onclick="mostrarData(this)"
@@ -262,7 +509,8 @@
                 </div>
                 <div class="col-2 d-flex justify-content-center ps-0 h-50 ms-2">
                     <button type="button" alt="sig" class="btn btn-outline-primary" onclick="avanzar()" disabled
-                        id="avance"><img src="images/next.png" alt="adelante" class="img img-fluid hover-btn"></button>
+                        id="avance"><img src="images/next.png" alt="adelante" class="img img-fluid hover-btn"
+                            id="imgAvance"></button>
                 </div>
             </div>
         </footer>

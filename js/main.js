@@ -1,33 +1,33 @@
 const pantalla = document.getElementById("pantalla").style.display = "none";
 //SALUDA SOLO UNA VEZ CON EL AUDIO ASÍ NO SE VUELVE REPETITIVO 
 let contadorSaludo = 0;
-let contadorPreguntas=0;
+let contadorPreguntas = 0;
 
 //TEXTOS ANIMADOS
-var bienvenida = new Typed('#txtAnimado', {
-    strings: [
-        '<i class="fs-4">¡Hola!Te damos la bienvenida a nuestra calculadora de huella de carbono.</i>',
-        '<i class="fs-4">Soy Huellita</i>',
-        '<i class="fs-4">¿Cuál es tu nombre?</i>'],
-
-    typeSpeed: 20,
-    backSpeed: 50,
-    shuffle: false,
-    backDelay: 1000,
-    loop: false,
-    showCursor: false,
-    fadeOut: true,
-    fadeOutClass: 'typed-fade-out',
-    fadeOutDelay: 50,
-
-})
-
+var bienvenida;
 var edad;
 let zona;
-let tipoVehiculo;
-let personas;
-let sumiluz;
 
+var tipoVehiculo;
+var cantKilo;
+var transporteP;
+var vuelosP;
+var biciP;
+var carpoolingP;
+var efienergy;
+
+var tipoEnergy;
+var viviendaP;
+var personasP;
+var electrosP;
+var reciclasP;
+var dispositivosP;
+var renovablesP;
+
+var aguaConsumo;
+var product;
+
+var felicidades;
 
 var placeNombre = new Typed('#usuarioNombre', {
     strings: ['Tu nombre aquí', 'Escribe aquí', 'para continuar'],
@@ -42,44 +42,38 @@ var placeNombre = new Typed('#usuarioNombre', {
 
 //CREACION DE USUARIO CON LAS VARIABLES E INFORMACION A GUARDAR
 class Usuario {
-    constructor(nombre, edad, mail, zona, tipoVehiculo,consumoTotal, categoria, fecha, primerTiempo, segundoTiempo, cantPersonas, tipoElectrico, cantConsumoElectrico, tipoGas, cantConsumoGas, cantResiduos, colectivo, moto, auto, bici, tren, caminar, monopatin, frecuenciaAuto, frecuenciaAvion, frecuenciaColectivo, dieta, consumoCarne, recicla, compost, plantas, dispositivos, salidas) {
+    constructor(nombre, edad, zona, tipoVehiculo, cantKilometros, transporteP, vuelos, bicicamina, compVehiculo, eficiencia, electrica, gasNatural, gasEnvasado, renovable, sizeVivienda, cantPersonas, electros, recicla, dispositivos, renovables, agua, locales, fecha, mail, resultado, categoria) {
+        //preguntas de perfil
         this.nombre = nombre;
         this.edad = edad;
-        this.mail = mail;
         this.zona = zona;
+        //preguntas de transporte
         this.tipoVehiculo = tipoVehiculo;
-        this.consumoTotal = consumoTotal;
-        this.categoria = categoria;
-        this.fecha = fecha;
-        //tiempo que se tarda en contestar desde el boton comenzar hasta el boton calcular resultado
-        this.primerTiempo = primerTiempo;
-        //tiempo que se tarda en contestar desde el boton conseguir medalla hasta el boton calcular y obtener medalla
-        this.segundoTiempo = segundoTiempo;
-
+        this.cantKilometros = cantKilometros;
+        this.transporteP = transporteP;
+        this.vuelos = vuelos;
+        this.bicicamina = bicicamina;
+        this.compVehiculo = compVehiculo;
+        this.eficiencia = eficiencia;
+        //preguntas de hogar
+        this.electrica = electrica;
+        this.gasNatural = gasNatural;
+        this.gasEnvasado = gasEnvasado;
+        this.renovable = renovable;
+        this.sizeVivienda = sizeVivienda;
         this.cantPersonas = cantPersonas;
-        this.tipoElectrico = tipoElectrico;
-        this.cantConsumoElectrico = cantConsumoElectrico;
-        this.tipoGas = tipoGas;
-        this.cantConsumoGas = cantConsumoGas;
-        this.cantResiduos = cantResiduos;
-        this.colectivo = colectivo;
-        this.moto = moto;
-        this.auto = auto;
-        this.bici = bici;
-        this.tren = tren;
-        this.caminar = caminar;
-        this.monopatin = monopatin;
-        this.frecuenciaAuto = frecuenciaAuto;
-        this.frecuenciaAvion = frecuenciaAvion;
-        this.frecuenciaColectivo = frecuenciaColectivo;
-        this.dieta = dieta;
-        this.consumoCarne = consumoCarne;
+        this.electros = electros;
         this.recicla = recicla;
-        this.compost = compost;
-        this.plantas = plantas;
         this.dispositivos = dispositivos;
-        this.salidas = salidas;
-
+        this.renovables = renovables;
+        //preguntas de estilo de vida
+        this.agua = agua;
+        this.locales = locales;
+        //preguntas de estilo de vida
+        this.fecha = fecha;
+        this.mail = mail;
+        this.resultado = resultado;
+        this.categoria = categoria
     }
 }
 
@@ -100,8 +94,6 @@ idEdad.addEventListener('input', () => {
     avanceBtn.disabled = texto === '';
 });
 
-
-
 //DEFINE EL ORDEN DE LAS PANTALLAS Y EL AVANCE Y RETROCESO
 let pantallaActiva = 0;
 
@@ -111,37 +103,57 @@ comenzar();
 const usuario = new Usuario;
 console.log(usuario);
 
-
 //COMIENZA LA APLICACION
 function comenzar() {
     const login = document.getElementById("btnlogin").style.display = "flex";
-    const qa = document.getElementById("qa").style.display = "none";
     const auspiciantes = document.getElementById("provincia").style.display = "flex";
     const botonesNav = document.getElementById("botonesNav").style.display = "none";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/fondo.jpeg)";
     const main = document.getElementById("main").style.display = "block";
     const masInfo = document.getElementById("btnInfo").style.display = "none";
     pantallaActiva = 0;
-    bienvenida.reset();
-    bienvenida.start();
+
+    const listaPreguntas = document.getElementById("listaPreguntas").style.display = "none";
+    const idPerfil = document.getElementById("divPerfil").style.display = "none";
+    const idTransporte = document.getElementById("divTransporte").style.display = "none";
+    const idHogar = document.getElementById("divHogar").style.display = "none";
+    const idVida = document.getElementById("divVida").style.display = "none";
+    const idFinal = document.getElementById("divFinal").style.display = "none";
 }
-
-
-
-
 
 ////////////////////////COMIENZA LA CAPTURA DE DATOS PERSONALES///////////////////
 
-function mostrarQA() {
-    contadorPreguntas++;
-    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
-    const avanceBtn = document.getElementById('avance');
+function mostrarPreguntas() {
+    contadorPreguntas = 1;
+    if (edad != null) {
+        edad.destroy();
+    }
+    bienvenida = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¡Hola!Te damos la bienvenida a nuestra calculadora de huella de carbono.</i>',
+            '<i class="fs-4">Soy Huellita</i>',
+            '<i class="fs-4">¿Cuál es tu nombre?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    bienvenida.start();
+
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
     if (usuario.nombre != undefined) {
         avanceBtn.disabled = false;
     }
     contadorSaludo += 1;
     const main = document.getElementById("main").style.display = "none";
-    const qa = document.getElementById("qa").style.display = "flex";
+    const listaPreguntas = document.getElementById("listaPreguntas").style.display = "flex";
     const auspiciantes = document.getElementById("provincia").style.display = "none";
     const botonesNav = document.getElementById("botonesNav").style.display = "flex";
     const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
@@ -150,28 +162,27 @@ function mostrarQA() {
     pantallaActiva = 1;
     if (contadorSaludo == 1) {
         const saludar = document.getElementById("saludo").play();
-        bienvenida.start();
-        bienvenida.reset();
+
     }
+
+
+    const idPerfil = document.getElementById("divPerfil").style.display = "flex";
     const nombre = document.getElementById("inputNombre").style.display = "flex";
-    const edad = document.getElementById("inputEdad").style.display = "none";
+    const edadf = document.getElementById("inputEdad").style.display = "none";
     const zona = document.getElementById("inputZona").style.display = "none";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
-    
 }
 
 
 function mostrarEdad() {
-    contadorPreguntas++;
-    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
     if (idEdad.value.trim() === '') {
         const avanceBtn = document.getElementById('avance').disabled = true;
     }
 
     bienvenida.destroy();
+    if (zona != null) {
+        zona.destroy();
+    }
     const nombreValue = document.getElementById("usuarioNombre").value;
     edad = new Typed('#txtAnimado', {
         strings: [
@@ -191,26 +202,23 @@ function mostrarEdad() {
         fadeOutDelay: 50,
 
     })
-
-
+    edad.start();
     const nombre = document.getElementById("inputNombre").style.display = "none";
     const anios = document.getElementById("inputEdad").style.display = "flex";
-    const zona = document.getElementById("inputZona").style.display = "none";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
+    const zonaf = document.getElementById("inputZona").style.display = "none";
 }
 
 function mostrarZona() {
-    contadorPreguntas++;
-    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
     const avanceBtn = document.getElementById('avance');
     if (usuario.zona == undefined) {
         console.log("entró")
         avanceBtn.disabled = true;
     }
     edad.destroy();
+    if (tipoVehiculo != null) {
+        tipoVehiculo.destroy();
+    }
     zona = new Typed('#txtAnimado', {
         strings: [
             '<i class="fs-4">¿En qué región de la provincia de Neuquén vivís?</i>^2000',
@@ -228,86 +236,437 @@ function mostrarZona() {
 
     })
     zona.start();
+
+    const idPerfil = document.getElementById("divPerfil").style.display = "flex";
+    const idTransporte = document.getElementById("divTransporte").style.display = "none";
     const nombre = document.getElementById("inputNombre").style.display = "none";
     const anios = document.getElementById("inputEdad").style.display = "none";
     const area = document.getElementById("inputZona").style.display = "flex";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
 
 }
 
 function idZona(boton) {
     avanceBtn.disabled = false;
-
-    switch (boton.id) {
-        case "0":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Vaca Muerta";
-            console.log(usuario);
-            break;
-        case "1":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Region Sur";
-            console.log(usuario);
-            break;
-        case "2":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Comarca";
-            console.log(usuario);
-            break;
-        case "3":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Norte";
-            console.log(usuario);
-            break;
-        case "4":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Confluencia";
-            console.log(usuario);
-            break;
-        case "5":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Limay Centro";
-            console.log(usuario);
-            break;
-        case "6":
-            //GUARDO LA ZONA AL TOCAR LA OPCION
-            usuario.zona = "Centro Oeste";
-            console.log(usuario);
-            break;
-        default:
-            break;
-    }
+    usuario.zona = boton.value;
+    console.log(usuario);
 }
 
-function mostrarVehiculo(){
+function mostrarVehiculo() {
     zona.destroy();
-    contadorPreguntas++;
-    const preguntas= document.getElementById("preguntas").innerHTML=contadorPreguntas+" / 21";
+    if (cantKilo != null) {
+        cantKilo.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
     if (usuario.tipoVehiculo == undefined) {
         console.log("entró")
         avanceBtn.disabled = true;
     }
 
+    tipovehiculo = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Qué tipo de vehículo utilizas principalmente?</i>'],
 
-    const area = document.getElementById("inputZona").style.display = "none";
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    tipovehiculo.start();
+
+    const idPerfil = document.getElementById("divPerfil").style.display = "none";
+    const idTransporte = document.getElementById("divTransporte").style.display = "flex";
     const vehiculo = document.getElementById("inputVehiculo").style.display = "flex";
+    const cantKilometros = document.getElementById("cantKilometros").style.display = "none";
+    const tPublico = document.getElementById("tPublico").style.display = "none";
 }
 
-function idVehiculo(){
+function idVehiculo(boton) {
+    console.log("aca estoy");
     avanceBtn.disabled = false;
-
-
+    const vehiculoElegido = boton.innerHTML;
+    usuario.tipoVehiculo = vehiculoElegido;
+    console.log(usuario);
 }
+
+function mostrarKilometros() {
+    tipovehiculo.destroy();
+    if (transporteP != null) {
+        transporteP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.cantKilometros == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    cantKilo = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuántos kilómetros conduces en promedio cada semana?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    cantKilo.start();
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
+    const cantKilometros = document.getElementById("cantKilometros").style.display = "flex";
+    const tPublico = document.getElementById("tPublico").style.display = "none";
+}
+
+function idKilometros(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const kilometros = boton.innerHTML;
+    usuario.cantKilometros = kilometros;
+    console.log(usuario);
+}
+
+function mostrarTransporte() {
+    if (usuario.tipoVehiculo == "No uso vehículo") {
+        tipovehiculo.destroy();
+    }
+    else {
+        if (cantKilo != null) {
+            cantKilo.destroy();
+        }
+
+    }
+    if (vuelosP != null) {
+        vuelosP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.transporteP == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    transporteP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Utilizas transporte público regularmente? ¿Cuántos días a la semana?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    transporteP.start();
+    const vehiculo = document.getElementById("inputVehiculo").style.display = "none";
+    const cantKilometros = document.getElementById("cantKilometros").style.display = "none";
+    const tPublico = document.getElementById("tPublico").style.display = "flex";
+    const vuelos = document.getElementById("vuelos").style.display = "none";
+}
+
+function idTransporte(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const tPublico = boton.innerHTML;
+    usuario.transporteP = tPublico;
+    console.log(usuario);
+}
+
+function mostrarVuelos() {
+    transporteP.destroy();
+    if (biciP != null) {
+        biciP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.vuelos == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    vuelosP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuántos vuelos nacionales e internacionales tomas en un año?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    vuelosP.start();
+
+
+    const tPublico = document.getElementById("tPublico").style.display = "none";
+    const vuelos = document.getElementById("vuelos").style.display = "flex";
+    const bicicamina = document.getElementById("bicicamina").style.display = "none";
+}
+
+function idVuelos(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const cantvuelos = boton.innerHTML;
+    usuario.vuelos = cantvuelos;
+    console.log(usuario);
+}
+
+
+function mostrarBiciCamina() {
+    vuelosP.destroy();
+    if (carpoolingP != null) {
+        carpoolingP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.bicicamina == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    biciP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Realizas viajes en bicicleta o caminatas como parte de tu rutina diaria?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    biciP.start();
+
+    const vuelos = document.getElementById("vuelos").style.display = "none";
+    const bicicamina = document.getElementById("bicicamina").style.display = "flex";
+    const carpooling = document.getElementById("carpooling").style.display = "none";
+}
+
+function idBiciCamina(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const bici = boton.innerHTML;
+    usuario.bicicamina = bici;
+    console.log(usuario);
+}
+
+function mostrarCarpooling() {
+    biciP.destroy();
+    if (efienergy != null) {
+        efienergy.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.compVehiculo == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    carpoolingP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Participas en algún sistema de carpooling o compartes el vehículo con otras personas semanalmente?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    carpoolingP.start();
+
+    const bicicamina = document.getElementById("bicicamina").style.display = "none";
+    const carpooling = document.getElementById("carpooling").style.display = "flex";
+    const efiEnergía = document.getElementById("efiEnergia").style.display = "none";
+}
+
+function idCarpooling(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const carpooling = boton.innerHTML;
+    usuario.compVehiculo = carpooling;
+    console.log(usuario);
+}
+
+function mostrarEficiencia() {
+    carpoolingP.destroy();
+    if (tipoEnergy != null) {
+        tipoEnergy.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.eficiencia == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    efienergy = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuál es la eficiencia de combustible de tu vehículo principal?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    efienergy.start();
+
+    const divHogar = document.getElementById("divHogar").style.display = "none";
+    const carpooling = document.getElementById("carpooling").style.display = "none";
+    const efiEnergía = document.getElementById("efiEnergia").style.display = "flex";
+    const energia = document.getElementById("bicicamina").style.display = "none";
+}
+function idEficiencia(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const efi = boton.innerHTML;
+    usuario.eficiencia = efi;
+    console.log(usuario);
+}
+
+function mostrarEnergia() {
+    if (usuario.tipoVehiculo == "No uso vehículo") {
+        carpoolingP.destroy();
+    }
+    else {
+        efienergy.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (viviendaP != null) {
+        viviendaP.destroy();
+    }
+    if (usuario.renovable == undefined && usuario.gasEnvasado == undefined && usuario.gasNatural == undefined && usuario.electrica == undefined) {
+        console.log("entró toda")
+        avanceBtn.disabled = true;
+    }
+    tipoEnergy = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Qué tipo de energías utilizas en tu hogar?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    tipoEnergy.start();
+
+    const divHogar = document.getElementById("divHogar").style.display = "flex";
+    const carpooling = document.getElementById("carpooling").style.display = "none";
+    const efiEnergía = document.getElementById("efiEnergia").style.display = "none";
+    const energia = document.getElementById("energia").style.display = "flex";
+    const vivienda = document.getElementById("sizeVivienda").style.display = "none";
+}
+
+function guardarEnergia(boton) {
+    switch (boton.id) {
+        case "electrica":
+            usuario.electrica = boton.checked;
+            break;
+        case "gasNatural":
+            usuario.gasNatural = boton.checked;
+            break;
+        case "gasEnvasado":
+            usuario.gasEnvasado = boton.checked;
+            break;
+        case "renovables":
+            usuario.renovable = boton.checked;
+            break;
+        default:
+            break;
+    }
+    const renovable = document.getElementById("renovables");
+    const gasNatural = document.getElementById("gasNatural");
+    const gasEnvasado = document.getElementById("gasEnvasado");
+    const electrica = document.getElementById("electrica");
+    if (renovable.checked == true || gasNatural.checked == true || gasEnvasado.checked == true || electrica.checked == true) {
+        avanceBtn.disabled = false;
+    }
+    else {
+        avanceBtn.disabled = true;
+    }
+
+    console.log(usuario);
+}
+
+function mostrarVivienda() {
+    tipoEnergy.destroy();
+    if (personasP != null) {
+        personasP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.compVehiculo == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    viviendaP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuál es el tamaño de tu vivienda en metros cuadrados?</i>'],
+
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+
+    })
+    viviendaP.start();
+
+    const energia = document.getElementById("energia").style.display = "none";
+    const vivienda = document.getElementById("sizeVivienda").style.display = "flex";
+    const personas = document.getElementById("cantPersonas").style.display = "none";
+}
+
+function idtamanio(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const vivienda = boton.innerHTML;
+    usuario.sizeVivienda = vivienda;
+    console.log(usuario);
+}
+
 
 function mostrarPersonas() {
-    zona.destroy();
-    personas = new Typed('#txtAnimado', {
+    viviendaP.destroy();
+    if (electrosP != null) {
+        electrosP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.cantPersonas == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    personasP = new Typed('#txtAnimado', {
         strings: [
-            '<i class="fs-4">¿Cuántas personas viven en tu domicilio?</i>'],
-
+            '<i class="fs-4">¿Cuántas personas viven en tu hogar?</i>'],
         typeSpeed: 20,
         backSpeed: 50,
         shuffle: false,
@@ -317,23 +676,34 @@ function mostrarPersonas() {
         fadeOut: true,
         fadeOutClass: 'typed-fade-out',
         fadeOutDelay: 50,
-
     })
-    const nombre = document.getElementById("inputNombre").style.display = "none";
-    const anios = document.getElementById("inputEdad").style.display = "none";
-    const area = document.getElementById("inputZona").style.display = "none";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "flex";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/perfil.jpg)";
+    personasP.start();
+    const vivienda = document.getElementById("sizeVivienda").style.display = "none";
+    const personas = document.getElementById("cantPersonas").style.display = "flex";
+    const electros = document.getElementById("electrosConsumo").style.display = "none";
 }
 
-function mostrarSumiLuz() {
-    personas.destroy();
-    sumiluz = new Typed('#txtAnimado', {
-        strings: [
-            '<i class="fs-4">¿Qué tipo de suministro eléctrico utilizas?</i>'],
+function idPersonas(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const personas = boton.innerHTML;
+    usuario.cantPersonas = personas;
+    console.log(usuario);
+}
 
+function mostrarElectros() {
+    personasP.destroy();
+    if (reciclasP != null) {
+        reciclasP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.electros == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    electrosP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Qué electrodomésticos utilizas y con qué frecuencia?</i>'],
         typeSpeed: 20,
         backSpeed: 50,
         shuffle: false,
@@ -343,24 +713,34 @@ function mostrarSumiLuz() {
         fadeOut: true,
         fadeOutClass: 'typed-fade-out',
         fadeOutDelay: 50,
-
     })
-    const nombre = document.getElementById("inputNombre").style.display = "none";
-    const anios = document.getElementById("inputEdad").style.display = "none";
-    const area = document.getElementById("inputZona").style.display = "none";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "flex";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "none";
-    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
+    electrosP.start();
+    const personas = document.getElementById("cantPersonas").style.display = "none";
+    const electros = document.getElementById("electrosConsumo").style.display = "flex";
+    const reci = document.getElementById("reciclaje").style.display = "none";
 }
 
+function idElectros(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const electros = boton.innerHTML;
+    usuario.electros = electros;
+    console.log(usuario);
+}
 
-function mostrarConsumo() {
-    sumiluz.destroy();
-    consumo = new Typed('#txtAnimado', {
+function mostrarReciclar() {
+    electrosP.destroy();
+    if (dispositivosP != null) {
+        dispositivosP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.recicla == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    reciclasP = new Typed('#txtAnimado', {
         strings: [
-            '<i class="fs-4">¿Cuál es tu consumo eléctrico mensual?</i>'],
-
+            '<i class="fs-4">¿Reciclas regularmente?</i>'],
         typeSpeed: 20,
         backSpeed: 50,
         shuffle: false,
@@ -370,22 +750,232 @@ function mostrarConsumo() {
         fadeOut: true,
         fadeOutClass: 'typed-fade-out',
         fadeOutDelay: 50,
-
     })
-    const nombre = document.getElementById("inputNombre").style.display = "none";
-    const anios = document.getElementById("inputEdad").style.display = "none";
-    const area = document.getElementById("inputZona").style.display = "none";
-    const cantidadPer = document.getElementById("inputPersonas").style.display = "none";
-    const sumiLuz = document.getElementById("inputSumiLuz").style.display = "none";
-    const consumoLuz = document.getElementById("inputConsumo").style.display = "flex";
-    const fondo = document.getElementById("fondo").style.backgroundImage = "url(images/energia.jpg)";
+    reciclasP.start();
+    const electros = document.getElementById("electrosConsumo").style.display = "none";
+    const reci = document.getElementById("reciclaje").style.display = "flex";
+    const dispo = document.getElementById("conDispositivos").style.display = "none";
 }
 
+function idReciclaje(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const reci = boton.innerHTML;
+    usuario.recicla = reci;
+    console.log(usuario);
+}
 
+function mostrarDispositivos() {
+    reciclasP.destroy();
+    if (renovablesP != null) {
+        renovablesP.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.dispositivos == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    dispositivosP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuántos dispositivos electrónicos dejas enchufados permanentemente en tu hogar?</i>'],
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+    })
+    dispositivosP.start();
 
-function compartirResultado() {
+    const reci = document.getElementById("reciclaje").style.display = "none";
+    const dispo = document.getElementById("conDispositivos").style.display = "flex";
+    const renova = document.getElementById("tipoRenovables").style.display = "none";
+}
+
+function idDisposi(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const dispo = boton.innerHTML;
+    usuario.dispositivos = dispo;
+    console.log(usuario);
+}
+
+function mostrarRenovable() {
+    dispositivosP.destroy();
+    if (aguaConsumo != null) {
+        aguaConsumo.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.renovables == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    renovablesP = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Tienes energía renovable con paneles solares o turbinas eólicas?</i>'],
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+    })
+    renovablesP.start();
+    const hogar = document.getElementById("divHogar").style.display = "flex";
+    const dispo = document.getElementById("conDispositivos").style.display = "none";
+    const renova = document.getElementById("tipoRenovables").style.display = "flex";
+    const agua = document.getElementById("aguaConsumo").style.display = "none";
+    const vida = document.getElementById("divVida").style.display = "none";
+}
+
+function idRenovable(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const reno = boton.innerHTML;
+    usuario.renovables = reno;
+    console.log(usuario);
+}
+
+function mostrarAgua() {
+    renovablesP.destroy();
+    if (product != null) {
+        product.destroy();
+    }
+    const preguntas = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    if (usuario.agua == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    aguaConsumo = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Cuánta agua consumes aproximadamente al día en tu hogar?</i>'],
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+    })
+    aguaConsumo.start();
+    const renova = document.getElementById("tipoRenovables").style.display = "none";
+    const hogar = document.getElementById("divHogar").style.display = "none";
+    const vida = document.getElementById("divVida").style.display = "flex";
+    const agua = document.getElementById("aguaConsumo").style.display = "flex";
+    const local = document.getElementById("locales").style.display = "none";
+}
+
+function idAgua(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const agua = boton.innerHTML;
+    usuario.agua = agua;
+    console.log(usuario);
+}
+
+function mostrarLocales() {
+    aguaConsumo.destroy();
+    if (felicidades != null) {
+        felicidades.destroy();
+    }
+
+    const preguntas = document.getElementById("preguntas").style.color = "#f4dfb9";
+    const p = document.getElementById("preguntas").innerHTML = contadorPreguntas + " / 19";
+    const flechaAvance = document.getElementById("imgAvance").style.opacity = 100;
+    if (usuario.locales == undefined) {
+        console.log("entró")
+        avanceBtn.disabled = true;
+    }
+    product = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¿Compras productos locales o importados?</i>^2000',
+            '<i class="fs-4">¿Productos de temporada o fuera de temporada?</i>'],
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+    })
+    product.start();
+    const vida = document.getElementById("divVida").style.display = "flex";
+    const agua = document.getElementById("aguaConsumo").style.display = "none";
+    const local = document.getElementById("locales").style.display = "flex";
+    const final = document.getElementById("divFinal").style.display = "none";
 
 }
+
+function idLocales(boton) {
+    console.log("aca estoy");
+    avanceBtn.disabled = false;
+    const local = boton.innerHTML;
+    usuario.locales = local;
+    console.log(usuario);
+}
+
+function mostrarFinal() {
+    product.destroy();
+    const p = document.getElementById("preguntas").innerHTML = "_";
+    felicidades = new Typed('#txtAnimado', {
+        strings: [
+            '<i class="fs-4">¡Felicidades!Completaste la info que necesito para calcular tu huella de carbono personal</i>',
+            '<i class="fs-4">Me gustaría poder enviarte los resultados a tu mail.</i>',],
+        typeSpeed: 20,
+        backSpeed: 50,
+        shuffle: false,
+        backDelay: 1000,
+        loop: false,
+        showCursor: false,
+        fadeOut: true,
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: 50,
+    })
+    felicidades.start();
+
+    avanceBtn.disabled = true;
+    const flechaAvance = document.getElementById("imgAvance").style.opacity = 0;
+    const local = document.getElementById("locales").style.display = "none";
+    const vida = document.getElementById("divVida").style.display = "none";
+    const final = document.getElementById("divFinal").style.display = "flex";
+    const calcular = document.getElementById("calcular").style.display = "flex";
+}
+
+function opcionMail() {
+    const checkMail = document.getElementById("mail");
+    if (checkMail.checked == true) {
+        const btn = document.getElementById("btnCalcular").disabled = false;
+        const inputMail = document.getElementById("usuarioMail").disabled = true;
+    }
+    else {
+        const btn = document.getElementById("btnCalcular").disabled = true;
+        const inputMail = document.getElementById("usuarioMail").disabled = false;
+    }
+}
+
+//VERIFICA SI ESCRIBIERON CORRECTAMENTE EL FORMATO DE UNA DIRECCION MAIL Y ACTIVA EL BOTON CALCULAR
+const inputElement = document.getElementById('usuarioMail');
+
+inputElement.addEventListener('input', function (event) {
+    const inputValue = event.target.value;
+    if (inputValue.includes('@')) {
+        const btn = document.getElementById("btnCalcular").disabled = false;
+    }
+});
+
+
+
+
 
 function mostrarPantalla() {
     if (pantallaActiva == 0) {
@@ -409,12 +999,18 @@ function avanzar() {
     pantallaActiva += 1;
     switch (pantallaActiva) {
         case 0:
+            contadorPreguntas = 0;
             comenzar();
             break;
         case 1:
-            mostrarQA();
+            contadorPreguntas = 1;
+            mostrarPreguntas();
             break;
         case 2:
+            contadorPreguntas = 2;
+            var audio = document.getElementById('saludo');
+            audio.pause();
+            audio.currentTime = 0; // Opcional: Reinicia el audio al principio
             //GUARDO EL NOMBRE INGRESADO AL TOCAR AVANZAR
             const idname = document.getElementById("usuarioNombre").value;
             usuario.nombre = idname;
@@ -422,6 +1018,7 @@ function avanzar() {
             mostrarEdad();
             break;
         case 3:
+            contadorPreguntas = 3;
             //GUARDO LA EDAD AL TOCAR AVANZAR
             const idEdad = document.getElementById("usuarioEdad").value;
             usuario.edad = idEdad;
@@ -429,13 +1026,86 @@ function avanzar() {
             mostrarZona();
             break;
         case 4:
+            contadorPreguntas = 4;
             mostrarVehiculo();
             break;
         case 5:
-            mostrarSumiLuz();
-            break;
+            if (usuario.tipoVehiculo == "No uso vehículo") {
+                contadorPreguntas = 6;
+                mostrarTransporte();
+                break;
+            }
+            else {
+                contadorPreguntas = 5;
+                mostrarKilometros();
+                break;
+            }
+
         case 6:
-            mostrarConsumo();
+            contadorPreguntas = 6;
+            mostrarTransporte();
+            break;
+        case 7:
+            contadorPreguntas = 7;
+            mostrarVuelos();
+            break;
+        case 8:
+            contadorPreguntas = 8;
+            mostrarBiciCamina();
+            break;
+        case 9:
+            contadorPreguntas = 9;
+            mostrarCarpooling();
+            break;
+        case 10:
+            if (usuario.tipoVehiculo == "No uso vehículo") {
+                contadorPreguntas = 11;
+                mostrarEnergia();
+                break;
+            }
+            else {
+                contadorPreguntas = 10;
+                mostrarEficiencia();
+                break;
+            }
+        case 11:
+            contadorPreguntas = 11;
+            mostrarEnergia();
+            break;
+        case 12:
+            contadorPreguntas = 12;
+            mostrarVivienda();
+            break;
+        case 13:
+            contadorPreguntas = 13;
+            mostrarPersonas();
+            break;
+        case 14:
+            contadorPreguntas = 14;
+            mostrarElectros();
+            break;
+        case 15:
+            contadorPreguntas = 15;
+            mostrarReciclar();
+            break;
+        case 16:
+            contadorPreguntas = 16;
+            mostrarDispositivos();
+            break;
+        case 17:
+            contadorPreguntas = 17;
+            mostrarRenovable();
+            break;
+        case 18:
+            contadorPreguntas = 18;
+            mostrarAgua();
+            break;
+        case 19:
+            contadorPreguntas = 19;
+            mostrarLocales();
+            break;
+        case 20:
+            mostrarFinal();
             break;
         default:
             comenzar();
@@ -486,48 +1156,95 @@ function retroceder() {
     switch (pantallaActiva) {
         case 0:
             comenzar();
+            contadorPreguntas = 0;
             break;
         case 1:
-            mostrarQA();
+            mostrarPreguntas();
+            contadorPreguntas = 1;
             break;
         case 2:
+            contadorPreguntas = 2;
             mostrarEdad();
             break;
         case 3:
+            contadorPreguntas = 3;
             mostrarZona();
             break;
         case 4:
+            contadorPreguntas = 4;
             mostrarVehiculo();
             break;
         case 5:
-            mostrarSumiLuz();
-            break;
+            if (usuario.tipoVehiculo == "No uso vehículo") {
+                contadorPreguntas = 4;
+                mostrarVehiculo();
+                break;
+            }
+            else {
+                contadorPreguntas = 5;
+                mostrarKilometros();
+                break;
+            }
+
         case 6:
-            mostrarConsumo();
-            break;
-        case 7:
-            mostrarSumiGas();
-            break;
-        case 8:
-            mostrarConsumoGas();
-            break;
-        case 9:
+            contadorPreguntas = 6;
             mostrarTransporte();
             break;
-        case 10:
-            mostrarLargaDis();
+        case 7:
+            mostrarVuelos();
             break;
+        case 8:
+            mostrarBiciCamina();
+            break;
+        case 9:
+            mostrarCarpooling();
+            break;
+        case 10:
+            if (usuario.tipoVehiculo == "No uso vehículo") {
+                contadorPreguntas = 9;
+                mostrarCarpooling();
+                break;
+            }
+            else {
+                contadorPreguntas = 10;
+                mostrarEficiencia();
+                break;
+            }
         case 11:
-            mostrarDieta();
+            mostrarEnergia();
             break;
         case 12:
-            mostrarGracias();
+            contadorPreguntas = 12;
+            mostrarVivienda();
             break;
         case 13:
-            mostrarResultado();
+            contadorPreguntas = 13;
+            mostrarPersonas();
             break;
         case 14:
-            mostrarMasPreguntas();
+            contadorPreguntas = 14;
+            mostrarElectros();
+            break;
+        case 15:
+            contadorPreguntas = 15;
+            mostrarReciclar();
+            break;
+        case 16:
+            contadorPreguntas = 16;
+            mostrarDispositivos();
+            break;
+        case 17:
+            contadorPreguntas = 17;
+            mostrarRenovable();
+            break;
+        case 18:
+            contadorPreguntas = 18;
+            mostrarAgua();
+            break;
+        case 19:
+            contadorPreguntas = 19;
+            avanceBtn.disabled = false;
+            mostrarLocales();
             break;
         default:
             comenzar();
@@ -576,7 +1293,7 @@ function simulateProgress() {
                     updateProgressBar(progress);
                 }
             }, 20);// Cambia este valor para ajustar la velocidad de llenado
-        break;
+            break;
         case 11:
             const interval2 = setInterval(() => {
                 if (progress >= 66) {// Porcentaje de llenado
@@ -586,7 +1303,7 @@ function simulateProgress() {
                     updateProgressBar(progress);
                 }
             }, 20);// Cambia este valor para ajustar la velocidad de llenado
-        break;
+            break;
 
         default:
             break;

@@ -66,6 +66,24 @@
     justify-content: center;
     align-content: center;
 }
+#usuarioMail{
+    height: 10vh !important;
+}
+.respuesta3 {
+    height: 30vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px!important;
+    margin: 0;
+    background-color: rgba(99, 99, 99, 0) !important;
+    padding: 0;
+    display: flex;
+    
+    justify-content: center;
+    align-content: center;
+}
 
 ::placeholder {
     color: rgb(255, 255, 255) !important;
@@ -109,7 +127,7 @@
 }
 
 #centro {
-    height: 63vh;
+    height: 67vh;
 }
 
 .bordeW {
@@ -179,7 +197,7 @@
 #progressBar {
     width: 0;
     height: 5px;
-    background-color: #F4DFB9;
+    background-color: #f4dfb9;
     transition: width 0.4s ease; /* Esto hará que los cambios sean suaves */
 }
 .icons {
@@ -202,6 +220,11 @@
 }
 .hover-btn:hover{
     transform: scale(1.2) !important;
+}
+
+.btn-outline-light{
+    margin-top: 3px !important;
+    padding: 3px !important; 
 }
 
 .card {
